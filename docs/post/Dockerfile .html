@@ -10,19 +10,13 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="以下是一个完整的 Dockerfile 使用指南的 Markdown 文档：
-
-```markdown
-# Dockerfile 使用指南
+<meta name="description" content="# Dockerfile 使用指南
 
 ## 什么是 Dockerfile？
 
 Dockerfile 是一个文本文件，包含了一系列指令，用于自动化构建 Docker 镜像。">
 <meta property="og:title" content="Dockerfile ">
-<meta property="og:description" content="以下是一个完整的 Dockerfile 使用指南的 Markdown 文档：
-
-```markdown
-# Dockerfile 使用指南
+<meta property="og:description" content="# Dockerfile 使用指南
 
 ## 什么是 Dockerfile？
 
@@ -97,29 +91,21 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>以下是一个完整的 Dockerfile 使用指南的 Markdown 文档：</p>
-<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-mh"># <span class="pl-en">Dockerfile 使用指南</span></span>
-
-<span class="pl-mh">## <span class="pl-en">什么是 Dockerfile？</span></span>
-
-Dockerfile 是一个文本文件，包含了一系列指令，用于自动化构建 Docker 镜像。通过 Dockerfile，您可以定义容器环境的配置、安装的软件、暴露的端口等。
-
-<span class="pl-mh">## <span class="pl-en">基本结构</span></span>
-
-一个典型的 Dockerfile 包含以下部分：
-
-<span class="pl-s">1</span><span class="pl-v">.</span> 基础镜像 (FROM)
-<span class="pl-s">2</span><span class="pl-v">.</span> 维护者信息 (LABEL)
-<span class="pl-s">3</span><span class="pl-v">.</span> 镜像操作指令 (RUN, COPY, ADD 等)
-<span class="pl-s">4</span><span class="pl-v">.</span> 容器启动时执行的命令 (CMD, ENTRYPOINT)
-
-<span class="pl-mh">## <span class="pl-en">常用指令详解</span></span>
-
-<span class="pl-mh">### <span class="pl-en">FROM</span></span>
-指定基础镜像，必须放在 Dockerfile 的第一条指令。
-
-<span class="pl-s">```</span><span class="pl-en">dockerfile</span>
-<span class="pl-k">FROM</span> ubuntu:20.04</pre></div>
+<div class="markdown-body" id="postBody"><h1>Dockerfile 使用指南</h1>
+<h2>什么是 Dockerfile？</h2>
+<p>Dockerfile 是一个文本文件，包含了一系列指令，用于自动化构建 Docker 镜像。通过 Dockerfile，您可以定义容器环境的配置、安装的软件、暴露的端口等。</p>
+<h2>基本结构</h2>
+<p>一个典型的 Dockerfile 包含以下部分：</p>
+<ol>
+<li>基础镜像 (FROM)</li>
+<li>维护者信息 (LABEL)</li>
+<li>镜像操作指令 (RUN, COPY, ADD 等)</li>
+<li>容器启动时执行的命令 (CMD, ENTRYPOINT)</li>
+</ol>
+<h2>常用指令详解</h2>
+<h3>FROM</h3>
+<p>指定基础镜像，必须放在 Dockerfile 的第一条指令。</p>
+<div class="highlight highlight-source-dockerfile"><pre class="notranslate"><span class="pl-k">FROM</span> ubuntu:20.04</pre></div>
 <h3>LABEL</h3>
 <p>为镜像添加元数据（替代已废弃的 MAINTAINER）。</p>
 <div class="highlight highlight-source-dockerfile"><pre class="notranslate"><span class="pl-k">LABEL</span> maintainer=<span class="pl-s">"yourname@example.com"</span>

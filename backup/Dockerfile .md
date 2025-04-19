@@ -1,6 +1,3 @@
-以下是一个完整的 Dockerfile 使用指南的 Markdown 文档：
-
-```markdown
 # Dockerfile 使用指南
 
 ## 什么是 Dockerfile？
