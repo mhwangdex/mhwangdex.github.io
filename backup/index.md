@@ -14,3 +14,6 @@ https://chat.deepseek.com/
 
 ### 微信传输助手 
 https://filehelper.weixin.qq.com/
+
+### cursor提示词
+https://cursor.directory/
