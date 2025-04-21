@@ -1,0 +1,1 @@
+[圣经_和合本圣经.pdf](https://github.com/user-attachments/files/19829118/_.pdf)
