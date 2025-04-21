@@ -17,3 +17,7 @@ https://filehelper.weixin.qq.com/
 
 ### cursor提示词
 https://cursor.directory/
+
+### sj
+
+[sj.pdf](https://github.com/user-attachments/files/19829234/sj.pdf)
