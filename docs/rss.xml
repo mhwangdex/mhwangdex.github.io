@@ -1,28 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 11:44:50 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>常用</title><link>https://mhwangdex.github.io/post/chang-yong.html</link><description>### music
-https://zz123.com/
-
-### movie
-https://ddys.pro/
-
-### news
-https://www.christianitytoday.com/news/
-
-### 搜索
-https://bing.com
-
-https://chat.deepseek.com/
-
-### 微信传输助手 
-https://filehelper.weixin.qq.com/
-
-### cursor提示词
-https://cursor.directory/
-
-。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/chang-yong.html</guid><pubDate>Sun, 20 Apr 2025 09:42:13 +0000</pubDate></item><item><title>markdown语法</title><link>https://mhwangdex.github.io/post/markdown-yu-fa.html</link><description>&lt;html&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 11:49:42 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>markdown语法</title><link>https://mhwangdex.github.io/post/markdown-yu-fa.html</link><description>&lt;html&gt;
 &lt;body&gt;
-&lt;!--StartFragment--&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Markdown（简称&lt;code inline=''&gt;md&lt;/code&gt;）是一种轻量级标记语言，主要用于写文档、README、博客文章等，简单、清晰、易读。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/markdown-yu-fa.html</guid><pubDate>Sun, 20 Apr 2025 09:21:10 +0000</pubDate></item><item><title>friend</title><link>https://mhwangdex.github.io/post/friend.html</link><description>### 2025年4月18日晚
-晚上突然下了大雨，小j突然给我打了电话，帮他送伞，这是时隔一个学期加两个月的时间再次见到他，我很开心，在这个学校里，我现在深深的感受到他与其他人的不同，他真诚，真实，勇敢。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/friend.html</guid><pubDate>Fri, 18 Apr 2025 13:54:58 +0000</pubDate></item><item><title>四月十七日</title><link>https://mhwangdex.github.io/post/si-yue-shi-qi-ri.html</link><description>### 2025年4月17日 星期四 [天气：☀️/⛅]  
+&lt;!--StartFragment--&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Markdown（简称&lt;code inline=''&gt;md&lt;/code&gt;）是一种轻量级标记语言，主要用于写文档、README、博客文章等，简单、清晰、易读。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/markdown-yu-fa.html</guid><pubDate>Sun, 20 Apr 2025 09:21:10 +0000</pubDate></item><item><title>四月十七日</title><link>https://mhwangdex.github.io/post/si-yue-shi-qi-ri.html</link><description>### 2025年4月17日 星期四 [天气：☀️/⛅]  
 今天是四月十七日晚，最近半个月都不想学习，也不想做其它的事，感觉没有能提起我感兴趣的，脑子空空的，就是不想学习，周四周五在运动会，所以放假了，不行玩游戏，不想看电影
 
 ![Image](https://github.com/user-attachments/assets/b052ba7b-14fa-4267-b3af-2a83d55bc8c0)
