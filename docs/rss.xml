@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 15:49:46 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>awd思路</title><link>https://mhwangdex.github.io/post/awd-si-lu.html</link><description>## 攻击
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 16:25:08 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>awd思路</title><link>https://mhwangdex.github.io/post/awd-si-lu.html</link><description>## 攻击
 一般是一个php的cms,
 通常会存在一个sql注入
 一个rce
@@ -24,7 +24,18 @@
     Fofa：host=”.edu.cn” &amp;&amp; body=”注册” &amp;&amp; country=”CN”
 
     直接搜供应商公司名称
-。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/xin-xi-shou-ji.html</guid><pubDate>Sat, 26 Apr 2025 15:47:12 +0000</pubDate></item><item><title>统计日志中访问次数最多的ip</title><link>https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</link><description>    使用awk统计IP出现频率：
+。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/xin-xi-shou-ji.html</guid><pubDate>Sat, 26 Apr 2025 15:47:12 +0000</pubDate></item><item><title>服务器应急响应</title><link>https://mhwangdex.github.io/post/fu-wu-qi-ying-ji-xiang-ying.html</link><description>## 遇到异常进程，异常网络连接
+1 使用top查看主机资源利用情况
+2 使用ps详细查看异常进程
+3 尝试能否找到文件，有一些木马，运行到内存后，会把文件删除
+
+多数木马，病毒，会选择维持权限，把正常的命令替换为恶意命令，要查看/bin目录下时间是否更改
+
+4 kill异常进程，如果过了一会又启动了，1，有定时任务，2，有父进程
+5 pstree 查看异常进程父子关系，kill掉父子进程
+6 搜索所有定时任务文件，find cron,
+用户级别定时任务croontab -l,/var/spool/,
+系统级别定时任务/etc/cron.d。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/fu-wu-qi-ying-ji-xiang-ying.html</guid><pubDate>Sat, 26 Apr 2025 15:43:26 +0000</pubDate></item><item><title>统计日志中访问次数最多的ip</title><link>https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</link><description>    使用awk统计IP出现频率：
     awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr | head -20
     
     仅统计400错误的IP：
