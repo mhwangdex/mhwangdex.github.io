@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 15:32:41 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>网络协议学习</title><link>https://mhwangdex.github.io/post/wang-luo-xie-yi-xue-xi.html</link><description># 网络协议
-
-## 基础
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 15:35:26 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>网络协议</title><link>https://mhwangdex.github.io/post/wang-luo-xie-yi.html</link><description>## 基础
 
 1. ### 什么是ip地址
 
@@ -11,7 +9,7 @@
 
    &gt; 路由器是物理设备对应着网络协议中网络层（也叫三层设备）,根据ip路由表转发数据报
 
-   路由器的接口相对于交换机比较少，它的每个接口都对应着不同的网络，以家庭中的路由器为例，接入家里的哪个接口一般配置为192.168.1.1也就是网关的地址，家里的设备想要上网都要经过网关，对外的接口一般由运营商负责分配（流量出口），一般也是内网地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/wang-luo-xie-yi-xue-xi.html</guid><pubDate>Sat, 26 Apr 2025 15:32:12 +0000</pubDate></item><item><title>nginx配置文件</title><link>https://mhwangdex.github.io/post/nginx-pei-zhi-wen-jian.html</link><description># NGINX 配置文件详解
+   路由器的接口相对于交换机比较少，它的每个接口都对应着不同的网络，以家庭中的路由器为例，接入家里的哪个接口一般配置为192.168.1.1也就是网关的地址，家里的设备想要上网都要经过网关，对外的接口一般由运营商负责分配（流量出口），一般也是内网地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/wang-luo-xie-yi.html</guid><pubDate>Sat, 26 Apr 2025 15:32:12 +0000</pubDate></item><item><title>nginx配置文件</title><link>https://mhwangdex.github.io/post/nginx-pei-zhi-wen-jian.html</link><description># NGINX 配置文件详解
 
 NGINX 的配置文件通常位于 `/etc/nginx/nginx.conf`，它采用模块化的结构，由多个指令块组成。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/nginx-pei-zhi-wen-jian.html</guid><pubDate>Sat, 26 Apr 2025 14:35:38 +0000</pubDate></item><item><title>markdown语法</title><link>https://mhwangdex.github.io/post/markdown-yu-fa.html</link><description>&lt;html&gt;
 &lt;body&gt;
