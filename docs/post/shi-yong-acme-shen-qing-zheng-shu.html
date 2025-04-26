@@ -10,38 +10,44 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# 网络协议
+<meta name="description" content="
+使用 `acme.sh` 为 Nginx 颁发 Let's Encrypt 证书的步骤如下：
 
-## 基础
+---
 
-1. ### 什么是ip地址
+### 1. **安装 `acme.sh`**
+   在服务器上安装 `acme.sh`：
+   ```bash
+   curl https://get.acme.sh | sh -s email=my@example.com
+   ```
+   安装完成后，重新加载 Shell 环境：
+   ```bash
+   source ~/.bashrc
+   ```
+      配置证书申请源 （zerossl letsencrypt buypass ssl.com google）
+      建议zerossl，因为letsencrypt越来越不被信任。">
+<meta property="og:title" content="使用acme申请证书">
+<meta property="og:description" content="
+使用 `acme.sh` 为 Nginx 颁发 Let's Encrypt 证书的步骤如下：
 
-   > ip地址是用来标识一台连入网络的主机的唯一标识符，像手机号和人之间的对应（ip---主机）
+---
 
-2. ### 路由器
-
-   > 路由器是物理设备对应着网络协议中网络层（也叫三层设备）,根据ip路由表转发数据报
-
-   路由器的接口相对于交换机比较少，它的每个接口都对应着不同的网络，以家庭中的路由器为例，接入家里的哪个接口一般配置为192.168.1.1也就是网关的地址，家里的设备想要上网都要经过网关，对外的接口一般由运营商负责分配（流量出口），一般也是内网地址。">
-<meta property="og:title" content="网络协议学习">
-<meta property="og:description" content="# 网络协议
-
-## 基础
-
-1. ### 什么是ip地址
-
-   > ip地址是用来标识一台连入网络的主机的唯一标识符，像手机号和人之间的对应（ip---主机）
-
-2. ### 路由器
-
-   > 路由器是物理设备对应着网络协议中网络层（也叫三层设备）,根据ip路由表转发数据报
-
-   路由器的接口相对于交换机比较少，它的每个接口都对应着不同的网络，以家庭中的路由器为例，接入家里的哪个接口一般配置为192.168.1.1也就是网关的地址，家里的设备想要上网都要经过网关，对外的接口一般由运营商负责分配（流量出口），一般也是内网地址。">
+### 1. **安装 `acme.sh`**
+   在服务器上安装 `acme.sh`：
+   ```bash
+   curl https://get.acme.sh | sh -s email=my@example.com
+   ```
+   安装完成后，重新加载 Shell 环境：
+   ```bash
+   source ~/.bashrc
+   ```
+      配置证书申请源 （zerossl letsencrypt buypass ssl.com google）
+      建议zerossl，因为letsencrypt越来越不被信任。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://mhwangdex.github.io/post/wang-luo-xie-yi-xue-xi.html">
+<meta property="og:url" content="https://mhwangdex.github.io/post/shi-yong-acme-shen-qing-zheng-shu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
-<title>网络协议学习</title>
-
+<title>使用acme申请证书</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -83,7 +89,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">网络协议学习</h1>
+<h1 class="postTitle">使用acme申请证书</h1>
 <div class="title-right">
     <a href="https://mhwangdex.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -91,7 +97,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/11" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/9" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -107,70 +113,120 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>网络协议</h1>
-<h2>基础</h2>
+<div class="markdown-body" id="postBody"><p>使用 <code class="notranslate">acme.sh</code> 为 Nginx 颁发 Let's Encrypt 证书的步骤如下：</p>
+<hr>
+<h3>1. <strong>安装 <code class="notranslate">acme.sh</code></strong></h3>
+<p>在服务器上安装 <code class="notranslate">acme.sh</code>：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl https://get.acme.sh <span class="pl-k">|</span> sh -s email=my@example.com</pre></div>
+<p>安装完成后，重新加载 Shell 环境：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.bashrc</pre></div>
+<pre class="notranslate"><code class="notranslate">  配置证书申请源 （zerossl letsencrypt buypass ssl.com google）
+  建议zerossl，因为letsencrypt越来越不被信任。
+
+  acme.sh --set-default-ca --server zerossl
+</code></pre>
+<hr>
+<h3>2. <strong>选择验证方式</strong></h3>
+<p><code class="notranslate">acme.sh</code> 支持多种验证方式，常用的是 <strong>HTTP 验证</strong> 和 <strong>DNS 验证</strong>。</p>
+<h4><strong>HTTP 验证</strong></h4>
+<ul>
+<li>适用于可以直接通过 HTTP 访问的域名。</li>
+<li>确保 Nginx 已配置好，并且可以通过 <code class="notranslate">http://yourdomain.com/.well-known/acme-challenge/</code> 访问验证文件。</li>
+</ul>
+<h4><strong>DNS 验证</strong></h4>
+<ul>
+<li>适用于无法直接通过 HTTP 访问的域名（如通配符域名 <code class="notranslate">*.example.com</code>）。</li>
+<li>需要配置 DNS API（如 Cloudflare、阿里云等）。</li>
+</ul>
+<hr>
+<h3>3. <strong>申请证书</strong></h3>
+<h4><strong>使用 HTTP 验证</strong></h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">acme.sh --issue -d yourdomain.com -d www.yourdomain.com --webroot /var/www/html</pre></div>
+<pre class="notranslate"><code class="notranslate">acme.sh --issue -d hk.issalt.dpdns.org --webroot /tmp/html2
+</code></pre>
+<ul>
+<li><code class="notranslate">-d</code>：指定域名（支持多个域名）。</li>
+<li><code class="notranslate">--webroot</code>：指定网站根目录，<code class="notranslate">acme.sh</code> 会在此目录下创建验证文件。</li>
+</ul>
+<h4><strong>使用 DNS 验证</strong></h4>
+<p>以 Cloudflare 为例：</p>
 <ol>
 <li>
-<h3>什么是ip地址</h3>
-<blockquote>
-<p>ip地址是用来标识一台连入网络的主机的唯一标识符，像手机号和人之间的对应（ip---主机）</p>
-</blockquote>
+<p>获取 Cloudflare API Token。</p>
 </li>
 <li>
-<h3>路由器</h3>
-<blockquote>
-<p>路由器是物理设备对应着网络协议中网络层（也叫三层设备）,根据ip路由表转发数据报</p>
-</blockquote>
-<p>路由器的接口相对于交换机比较少，它的每个接口都对应着不同的网络，以家庭中的路由器为例，接入家里的哪个接口一般配置为192.168.1.1也就是网关的地址，家里的设备想要上网都要经过网关，对外的接口一般由运营商负责分配（流量出口），一般也是内网地址。</p>
+<p>设置环境变量：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-k">export</span> CF_Token=<span class="pl-s"><span class="pl-pds">"</span>your_cloudflare_api_token<span class="pl-pds">"</span></span>
+<span class="pl-k">export</span> CF_Account_ID=<span class="pl-s"><span class="pl-pds">"</span>your_cloudflare_account_id<span class="pl-pds">"</span></span></pre></div>
 </li>
 <li>
-<h3>交换机</h3>
-<blockquote>
-<p>交换机位于网络层中的数据链路层，交换机是一个局域网，每个接口都有mac地址，根据mac地址表进行转发帧</p>
-</blockquote>
-<p>交换机的作用是负责流量转发，把接口的流量按mac地址表进行转发</p>
-<p>交换机也分为二层交换机和三层交换机，三层交换机就是有路由器的功能，需要配置ip地址</p>
-</li>
-<li>
-<h3>一台电脑如何连上网络？</h3>
-<blockquote>
-<p>电脑网卡，我的理解是 它处于数据链路层，有网络层的功能，要配置ip</p>
-</blockquote>
-<p>在windows上，win+r,输入cmd回车，输入ipconfig命令可以看到网卡的配置信息</p>
-<pre class="notranslate"><code class="notranslate">1. 本地DNS
-
-2. ip地址
-
-3. 子网掩码
-
-4. 网关
+<p>申请证书：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">acme.sh --issue --dns dns_cf -d yourdomain.com -d <span class="pl-k">*</span>.yourdomain.com</pre></div>
+<pre class="notranslate"><code class="notranslate">acme.sh --issue --dns -d hk.issalt.dpdns.org --yes-I-know-dns-manual-mode-enough-go-ahead-please
 </code></pre>
-<p>为什么需要这些配置，以我们打开抖音网页为例，输入抖音网址然后回车，这其中发生了什么?</p>
-<pre class="notranslate"><code class="notranslate"> 1. 首先浏览器帮我们向**本地DNS**发起DNS解析请求，目的是为了拿到抖音服务器的ip地址
- 2. tcp三次握手，建立双向连接通道
- 3. 服务器发送证书，浏览器检验证书有效性，生成随机字符，发给服务器作为密钥
- 4. 应用层封装数据包，封装好http数据包(请求方式、host主机名、user-agent、用户身份信息等)
- 5. 传输层封装包，头部+数据，源端口+目的端口+应用层数据
- 6. 网络层封包，源ip+目的ip+上层数据
- 7. 数据链路层封包，源mac+目的mac+数据
- 8. 操作系统查看路由信息，将数据包发给**网关**
+<pre class="notranslate"><code class="notranslate">acme.sh --issue --dns -d xiaoming88.ip-ddns.com -d *.xiaoming88.ip-ddns.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
+</code></pre>
+<pre class="notranslate"><code class="notranslate">acme.sh --renew --dns -d xiaoming88.ip-ddns.com -d *.xiaoming88.ip-ddns.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
 </code></pre>
 </li>
 </ol>
-<h2>应用层</h2>
-<h3>http</h3>
-<h3>DNS</h3>
-<h3>ssh/telnet</h3>
-<h3>smtp</h3>
-<h3>ftp</h3>
-<h2>传输层</h2>
-<h3>tcp</h3>
-<h3>udp</h3>
-<h2>网络层</h2>
-<h3>ip</h3>
-<h3>icmp</h3>
-<h3>arp</h3>
-<h2>数据链路层</h2></div>
+<hr>
+<h3>4. <strong>安装证书到 Nginx</strong></h3>
+<p>申请成功后，证书会保存在 <code class="notranslate">~/.acme.sh/yourdomain.com/</code> 目录下。将证书安装到 Nginx 的配置目录：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">acme.sh --install-cert -d yourdomain.com \
+--key-file       /etc/nginx/ssl/yourdomain.com.key  \
+--fullchain-file /etc/nginx/ssl/yourdomain.com.crt \
+--reloadcmd     <span class="pl-s"><span class="pl-pds">"</span>systemctl reload nginx<span class="pl-pds">"</span></span></pre></div>
+<ul>
+<li><code class="notranslate">--key-file</code>：指定私钥文件路径。</li>
+<li><code class="notranslate">--fullchain-file</code>：指定证书文件路径。</li>
+<li><code class="notranslate">--reloadcmd</code>：指定证书安装后重新加载 Nginx 的命令。</li>
+</ul>
+<hr>
+<h3>5. <strong>配置 Nginx</strong></h3>
+<p>编辑 Nginx 配置文件（如 <code class="notranslate">/etc/nginx/conf.d/yourdomain.com.conf</code>），添加 SSL 配置：</p>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">server</span> {
+    <span class="pl-k">listen</span> <span class="pl-s">443</span> ssl;
+    <span class="pl-k">server_name</span> yourdomain.com www.yourdomain.com;
+
+    <span class="pl-k">ssl_certificate</span> /etc/nginx/ssl/yourdomain.com.crt;
+    <span class="pl-k">ssl_certificate_key</span> /etc/nginx/ssl/yourdomain.com.key;
+
+    <span class="pl-k">ssl_protocols</span> TLSv1.2 TLSv1.3;
+    <span class="pl-k">ssl_ciphers</span> HIGH:!aNULL:!MD5;
+
+    <span class="pl-k">root</span> /var/www/html;
+    <span class="pl-k">index</span> index.html;
+
+    <span class="pl-k">location</span> <span class="pl-en">/ </span>{
+        <span class="pl-k">try_files</span> <span class="pl-smi">$uri</span> <span class="pl-smi">$uri</span>/ <span class="pl-c1">=404</span>;
+    }
+}
+
+<span class="pl-k">server</span> {
+    <span class="pl-k">listen</span> <span class="pl-s">80</span>;
+    <span class="pl-k">server_name</span> yourdomain.com www.yourdomain.com;
+    <span class="pl-c1">return</span> <span class="pl-s">301</span> https://<span class="pl-smi">$host$request_uri</span>;
+}</pre></div>
+<ul>
+<li>配置 HTTPS 监听端口（443）。</li>
+<li>配置 HTTP 到 HTTPS 的重定向（可选）。</li>
+</ul>
+<hr>
+<h3>6. <strong>重新加载 Nginx</strong></h3>
+<p>测试 Nginx 配置是否正确：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nginx -t</pre></div>
+<p>如果测试通过，重新加载 Nginx：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl reload nginx</pre></div>
+<hr>
+<h3>7. <strong>自动续期</strong></h3>
+<p><code class="notranslate">acme.sh</code> 会自动设置定时任务（cron job），在证书到期前续期。续期后会自动重新加载 Nginx。</p>
+<hr>
+<h3>8. <strong>验证证书</strong></h3>
+<p>访问 <code class="notranslate">https://yourdomain.com</code>，确认证书已生效。可以使用工具（如 <a href="https://www.ssllabs.com/ssltest/" rel="nofollow">SSL Labs</a>）检查证书配置。</p>
+<hr>
+<h3>总结</h3>
+<p>通过 <code class="notranslate">acme.sh</code> 为 Nginx 颁发证书的步骤包括：安装 <code class="notranslate">acme.sh</code>、选择验证方式、申请证书、安装证书、配置 Nginx 并重新加载。<code class="notranslate">acme.sh</code> 会自动处理证书续期，确保 HTTPS 服务持续可用。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
