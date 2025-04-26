@@ -1,5 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 15:47:35 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>信息收集</title><link>https://mhwangdex.github.io/post/xin-xi-shou-ji.html</link><description>## 使用谷歌语法
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 15:49:46 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>awd思路</title><link>https://mhwangdex.github.io/post/awd-si-lu.html</link><description>## 攻击
+一般是一个php的cms,
+通常会存在一个sql注入
+一个rce
+登录页弱密码
+后台文件上传
+网站根目录存在一个默认一句话木马
+
+## 防守流程
+进去ssh改为强密码
+备份网站根目录，后序审计
+删除网站木马
+修改网站配置信息数据库连接等等
+改数据库密码
+改网站后台密码
+加waf
+审计漏洞，修改网站代码重点rce。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/awd-si-lu.html</guid><pubDate>Sat, 26 Apr 2025 15:49:18 +0000</pubDate></item><item><title>信息收集</title><link>https://mhwangdex.github.io/post/xin-xi-shou-ji.html</link><description>## 使用谷歌语法
     site:学校域名.edu.cn ( '学号”) 
 
     学号可以替换成工号，身份证，获奖，证书，国奖，奖学金，初始密码，默认密码，预警，转专业
