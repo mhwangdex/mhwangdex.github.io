@@ -1,5 +1,62 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 26 Apr 2025 16:25:08 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>awd思路</title><link>https://mhwangdex.github.io/post/awd-si-lu.html</link><description>## 攻击
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sun, 27 Apr 2025 08:14:26 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>容器学习</title><link>https://mhwangdex.github.io/post/rong-qi-xue-xi.html</link><description># docker
+### 1 docker 常用命令
+ 镜像相关
+docker images
+docker pull
+docker push
+docker tag
+docker build -t 
+docker rmi
+
+容器相关
+docker ps
+docker ps -a
+docker run  -d -ti -p --name
+docker exec
+
+### 2 dockerfile
+from
+run
+cmd
+entrypoint
+add
+copy
+
+docker tag 源  目标:版本
+构建镜像 	docker build -t 名字  .
+
+
+### 3 docker网络
+使用docker network ls
+
+![Image](https://github.com/user-attachments/assets/ed12680a-6512-40b6-bd0d-9f236a5f7c24)
+1. none 
+k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络
+2. host
+3. bridge
+桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上
+dokcer0是网桥 虚拟交换机
+# K8S
+### 架构
+
+#### 组件
+
+1. **API Server**  
+   - 集群访问入口
+   - 功能：认证、权限校验、配置文件解析
+2. **etcd**  
+   - 分布式键值存储，保存集群状态数据
+3. **Controller Manager**  
+   - 维护服务状态（如副本数、节点健康）
+4. **Scheduler**  
+   - 调度任务（分配Pod到合适的工作节点）
+
+### kubectl使用
+
+### 资源调度
+
+### 存储。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/rong-qi-xue-xi.html</guid><pubDate>Sun, 27 Apr 2025 08:13:57 +0000</pubDate></item><item><title>awd思路</title><link>https://mhwangdex.github.io/post/awd-si-lu.html</link><description>## 攻击
 一般是一个php的cms,
 通常会存在一个sql注入
 一个rce
