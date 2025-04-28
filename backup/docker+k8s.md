@@ -51,6 +51,10 @@ dokcer0是网桥 虚拟交换机
 4. **Scheduler**  
    调度任务（分配Pod到合适的工作节点）
 
+#### 架构
+
+![Image](https://github.com/user-attachments/assets/58f3fef2-d28f-4cfe-80a7-31e55d4accc0)
+
 ### kubectl使用
 
 ### 资源调度
