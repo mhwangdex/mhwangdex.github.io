@@ -1,5 +1,8 @@
 # docker
+
 ### 1 docker 常用命令
+
+```
  镜像相关
 docker images
 docker pull
@@ -13,8 +16,11 @@ docker ps
 docker ps -a
 docker run  -d -ti -p --name
 docker exec
+```
 
 ### 2 dockerfile
+
+```
 from
 run
 cmd
@@ -23,43 +29,39 @@ add
 copy
 
 docker tag 源  目标:版本
-构建镜像 	docker build -t 名字  .
-
+构建镜像    docker build -t 名字  .
+```
 
 ### 3 docker网络
-使用docker network ls
 
-![Image](https://github.com/user-attachments/assets/ed12680a-6512-40b6-bd0d-9f236a5f7c24)
-1. none 
-k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络
-2. host
-3. bridge
-桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上
-dokcer0是网桥 虚拟交换机
+**使用docker network ls**
+
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png)
+
+1. **none ** **k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
+2. **host**
+3. **bridge** **桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上** **dokcer0是网桥 虚拟交换机**
+
 # K8S
-### 架构
+
+### 一 架构
 
 #### 组件
 
-1. **API Server**  
-   集群访问入口
-   功能：认证、权限校验、配置文件解析
-2. **etcd**  
-   分布式键值存储，保存集群状态数据
-3. **Controller Manager**  
-   维护服务状态（如副本数、节点健康）
-4. **Scheduler**  
-   调度任务（分配Pod到合适的工作节点）
+1. **API Server** **集群访问入口** **功能：认证、权限校验、配置文件解析**
+2. **etcd** **分布式键值存储，保存集群状态数据**
+3. **Controller Manager** **维护服务状态（如副本数、节点健康）**
+4. **Scheduler** **调度任务（分配Pod到合适的工作节点）**
 
-#### 架构
+### 架构
 
-![Image](https://github.com/user-attachments/assets/58f3fef2-d28f-4cfe-80a7-31e55d4accc0)
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/91270e75-197f-4bfe-b54b-04002b70a9e9.png)
 
 ### 二 kubectl使用
 
 #### 基础命令
 
-查看
+**查看**
 
 ```
 kubectl get deploy/pod 具体的名字 -o wide 
@@ -70,7 +72,7 @@ kubectl logs -f pod名
 kubectl describe node 名字
 ```
 
-增加
+**增加**
 
 ```
 kubectl apply -f 1.yaml
@@ -78,7 +80,7 @@ kubectl apply -f 1.yaml
 kubectl run -i --image nginx:last sh
 ```
 
-改
+**改**
 
 ```
 # 修改副本
@@ -88,7 +90,7 @@ kubectl scale deployment xxx --replicas=0
 kubectl edit deployment xxx
 ```
 
-删
+**删**
 
 ```
 kubectl delete deplogment xxx
@@ -98,7 +100,7 @@ kubectl delete pods  xxx
 kubectl delete -f 1.yaml
 ```
 
-进入pod内
+**进入pod内**
 
 ```
 kubectl exec -ti pod名字 bash
@@ -118,8 +120,6 @@ pod是k8s中最小的资源单位
 deployment 是一种控制器资源--》replicaset控制器----> pod
 ```
 
-
-
 #### 创建pod
 
 ```
@@ -127,8 +127,6 @@ vi 1.yaml #可以编写一个yaml文件
 kubectl get pod xxx -o yaml  #导出一个yaml
 kubectl apply 1.yaml
 ```
-
-
 
 ```
 apiVersion: apps/v1
@@ -161,8 +159,6 @@ spec:
         command: ["sh","-c","while true;do echo 222 ;sleep 1;done"]
 status: {}
 ```
-
-
 
 ```
 # API 版本声明，指定使用的 Kubernetes API 版本
@@ -215,9 +211,9 @@ status: {}
 
 ### 五 资源调度
 
-节点污点
+**节点污点**
 
-pod调度策略
+**pod调度策略**
 
 ### 六 secret
 
@@ -225,24 +221,22 @@ pod调度策略
 
 ### 八 存储编排
 
-本地存储
+**本地存储**
 
-网络存储
+**网络存储**
 
 ### 九 服务发现和负载均衡
 
-service资源
-
-不同pod基于service通信
+**service是什么？**
 
 ### 十 自我恢复
 
-pod重启机制
+**pod重启机制**
 
-pod健康检查
+**pod健康检查**
 
 ### 十一 自动上线和回滚
 
-升级
+**升级**
 
-回滚
+**回滚**
