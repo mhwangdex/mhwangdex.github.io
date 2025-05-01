@@ -38,7 +38,7 @@ docker tag 源  目标:版本
 
 ![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png)
 
-1. **none ** **k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
+1. **none** **k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
 2. **host**
 3. **bridge** **桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上** **dokcer0是网桥 虚拟交换机**
 
