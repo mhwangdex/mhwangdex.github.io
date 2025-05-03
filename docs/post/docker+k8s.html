@@ -50,7 +50,7 @@ docker tag 源  目标:版本
 
 ![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png)
 
-1. **none** **k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
+1. **none** k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
 2. **host**
 3. **bridge** **桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上** **dokcer0是网桥 虚拟交换机**
 
@@ -239,13 +239,38 @@ status: {}
 
 ### 九 服务发现和负载均衡
 
-**service是什么？**
+一、service是什么？
+
+针对同一个应用的多个pod副本，要访问，必然要引入负载均衡，引入负载均衡要考虑的几件事：
+
+1. **流量转发的效率问题** —— service采用ipvs转发流量
+
+   访问者 → service → 转发流量？？？→ 多个pod
+2. **副本的增加或减少，负载均衡配置的更新** —— service代理的pod会自动更新
+
+   kube-proxy组件 → service（智能负载均衡） → pod的ip地址+端口（endpoint） → 具体的pod中的某个服务
+
+二、为何要用service
+
+智能负载均衡
+
+三、如何用service
+
+service 四种 type
+
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/767cc897-2e83-41e0-b460-35a8847c12c9.png)
 
 ### 十 自我恢复
 
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/77f8057f-39a1-42a5-b788-117edbbfb99e.png)
+
 **pod重启机制**
 
+针对的是pod
+
 **pod健康检查**
+
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/968cae50-6c88-476e-857b-929ef4300c60.png)![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/c03c02ae-1c8f-4a1d-8ac2-53104e51726f.png)
 
 ### 十一 自动上线和回滚
 
@@ -293,7 +318,7 @@ docker tag 源  目标:版本
 
 ![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png)
 
-1. **none** **k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
+1. **none** k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
 2. **host**
 3. **bridge** **桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上** **dokcer0是网桥 虚拟交换机**
 
@@ -482,13 +507,38 @@ status: {}
 
 ### 九 服务发现和负载均衡
 
-**service是什么？**
+一、service是什么？
+
+针对同一个应用的多个pod副本，要访问，必然要引入负载均衡，引入负载均衡要考虑的几件事：
+
+1. **流量转发的效率问题** —— service采用ipvs转发流量
+
+   访问者 → service → 转发流量？？？→ 多个pod
+2. **副本的增加或减少，负载均衡配置的更新** —— service代理的pod会自动更新
+
+   kube-proxy组件 → service（智能负载均衡） → pod的ip地址+端口（endpoint） → 具体的pod中的某个服务
+
+二、为何要用service
+
+智能负载均衡
+
+三、如何用service
+
+service 四种 type
+
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/767cc897-2e83-41e0-b460-35a8847c12c9.png)
 
 ### 十 自我恢复
 
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/77f8057f-39a1-42a5-b788-117edbbfb99e.png)
+
 **pod重启机制**
 
+针对的是pod
+
 **pod健康检查**
+
+![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/968cae50-6c88-476e-857b-929ef4300c60.png)![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/c03c02ae-1c8f-4a1d-8ac2-53104e51726f.png)
 
 ### 十一 自动上线和回滚
 
@@ -596,7 +646,7 @@ docker tag 源  目标:版本
 <p><strong>使用docker network ls</strong></p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7c0bad6bb379c666b9f71f054c9b8129bf8db35d40e1d70282614c61a42f45e1/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30342f38666163666463302d636137382d346436392d623765342d3061613138633638336133312e706e67"><img src="https://camo.githubusercontent.com/7c0bad6bb379c666b9f71f054c9b8129bf8db35d40e1d70282614c61a42f45e1/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30342f38666163666463302d636137382d346436392d623765342d3061613138633638336133312e706e67" alt="image.png" data-canonical-src="https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png" style="max-width: 100%;"></a></p>
 <ol>
-<li><strong>none</strong> <strong>k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络</strong></li>
+<li><strong>none</strong> k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**</li>
 <li><strong>host</strong></li>
 <li><strong>bridge</strong> <strong>桥接模式 是指虚拟网卡和真实网卡都接到真实的交换机上</strong> <strong>dokcer0是网桥 虚拟交换机</strong></li>
 </ol>
@@ -743,10 +793,29 @@ status: {}
 <p><strong>本地存储</strong></p>
 <p><strong>网络存储</strong></p>
 <h3>九 服务发现和负载均衡</h3>
-<p><strong>service是什么？</strong></p>
+<p>一、service是什么？</p>
+<p>针对同一个应用的多个pod副本，要访问，必然要引入负载均衡，引入负载均衡要考虑的几件事：</p>
+<ol>
+<li>
+<p><strong>流量转发的效率问题</strong> —— service采用ipvs转发流量</p>
+<p>访问者 → service → 转发流量？？？→ 多个pod</p>
+</li>
+<li>
+<p><strong>副本的增加或减少，负载均衡配置的更新</strong> —— service代理的pod会自动更新</p>
+<p>kube-proxy组件 → service（智能负载均衡） → pod的ip地址+端口（endpoint） → 具体的pod中的某个服务</p>
+</li>
+</ol>
+<p>二、为何要用service</p>
+<p>智能负载均衡</p>
+<p>三、如何用service</p>
+<p>service 四种 type</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ab1475379766c5d5dc2c4107cab8a7494ae501a57a9f9bc39e8d371d1a82b205/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f37363763633839372d326538332d343165302d623436302d3335613838343763313263392e706e67"><img src="https://camo.githubusercontent.com/ab1475379766c5d5dc2c4107cab8a7494ae501a57a9f9bc39e8d371d1a82b205/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f37363763633839372d326538332d343165302d623436302d3335613838343763313263392e706e67" alt="image.png" data-canonical-src="https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/767cc897-2e83-41e0-b460-35a8847c12c9.png" style="max-width: 100%;"></a></p>
 <h3>十 自我恢复</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8d0d39df4324b8839186e6393e8534cfa0e91b656a845fe59c7a8ac660b58bc0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f37376638303537662d333961312d343261352d623738382d3131376564626266623939652e706e67"><img src="https://camo.githubusercontent.com/8d0d39df4324b8839186e6393e8534cfa0e91b656a845fe59c7a8ac660b58bc0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f37376638303537662d333961312d343261352d623738382d3131376564626266623939652e706e67" alt="image.png" data-canonical-src="https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/77f8057f-39a1-42a5-b788-117edbbfb99e.png" style="max-width: 100%;"></a></p>
 <p><strong>pod重启机制</strong></p>
+<p>针对的是pod</p>
 <p><strong>pod健康检查</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/fcc2b4b73a9a9d1db27b2719cb41e77ca19f5e8efa359a4f188e2fc222cf8e56/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f39363863616535302d366338382d343736652d383537622d3932396566343330306336302e706e67"><img src="https://camo.githubusercontent.com/fcc2b4b73a9a9d1db27b2719cb41e77ca19f5e8efa359a4f188e2fc222cf8e56/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f39363863616535302d366338382d343736652d383537622d3932396566343330306336302e706e67" alt="image.png" data-canonical-src="https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/968cae50-6c88-476e-857b-929ef4300c60.png" style="max-width: 100%;"></a><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ca4736e710a13644380e7fc3b96b85991663d25203e84ac0ca1331196e7f5905/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f63303363303261652d316338662d346131642d386163322d3533313034653531373236662e706e67"><img src="https://camo.githubusercontent.com/ca4736e710a13644380e7fc3b96b85991663d25203e84ac0ca1331196e7f5905/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6877616e676465782f6e6f74652d67656e2d696d6167652d73796e63406d61696e2f323032352d30352f63303363303261652d316338662d346131642d386163322d3533313034653531373236662e706e67" alt="image.png" data-canonical-src="https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/c03c02ae-1c8f-4a1d-8ac2-53104e51726f.png" style="max-width: 100%;"></a></p>
 <h3>十一 自动上线和回滚</h3>
 <p><strong>升级</strong></p>
 <p><strong>回滚</strong></p></div>
