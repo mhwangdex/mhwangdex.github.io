@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Thu, 08 May 2025 16:29:07 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>小米集团运维工程师(实习)面试</title><link>https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</link><description>## 0. 自我介绍
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Mon, 12 May 2025 16:29:21 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>小米集团运维工程师(实习)面试</title><link>https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</link><description>## 0. 自我介绍
 您好，我是XXX，目前是XX大学XX专业的学生。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</guid><pubDate>Thu, 08 May 2025 03:31:07 +0000</pubDate></item><item><title>docker+k8s</title><link>https://mhwangdex.github.io/post/docker%2Bk8s.html</link><description># docker
 
 ### 1 docker 常用命令
@@ -266,7 +266,16 @@ service 四种 type
 
 **升级**
 
-**回滚**。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/docker%2Bk8s.html</guid><pubDate>Sun, 27 Apr 2025 08:13:57 +0000</pubDate></item><item><title>网络协议</title><link>https://mhwangdex.github.io/post/wang-luo-xie-yi.html</link><description>## 基础
+**回滚**。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/docker%2Bk8s.html</guid><pubDate>Sun, 27 Apr 2025 08:13:57 +0000</pubDate></item><item><title>统计日志中访问次数最多的ip</title><link>https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</link><description>    使用awk统计IP出现频率：
+    awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr | head -20
+    
+    仅统计400错误的IP：
+    grep ' 400 ' /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head -20
+
+
+# 分析Nginx日志统计前20个访问IP的命令解析
+
+这是一个经典的Linux命令管道组合，用于从Nginx访问日志中统计出访问量最高的前20个IP地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</guid><pubDate>Sat, 26 Apr 2025 15:41:08 +0000</pubDate></item><item><title>网络协议</title><link>https://mhwangdex.github.io/post/wang-luo-xie-yi.html</link><description>## 基础
 
 1. ### 什么是ip地址
 
