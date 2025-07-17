@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 渗透测试流程
+
+### 渗透思路
+
+#### 信息收集
+
+1 首先对目标进行工商信息收集，主要收集目标的股权架构，子公司，网站备案，对外产品（小程序，app,公众号），法人电话，邮箱  ，边缘业务，找软柿子捏
+
+2 收集域名信息，子域名，ip,cdn,whois,端口
+
+3 web架构信息，操作系统，中间件，网站框架
+
+
+
+#### 渗透
+
+1 第一步是去识别网站对应的框架php，java，.net，apache，nginx，weblogic，jboss，Spring，structs，tomcat，Thinkphp，Thinkcmf，某CMS等，如果相应的通过POC探测，存在相应的漏洞可以直接漏洞利用
+
+2 但是如果没有，那第一步过去就过去了，接下来就对URL进行整体的信息收集，比如目录扫描，功能点页面确定等
+3 然后对应目录扫描，可以看看有没有目录遍历，是否存在敏感目录，有时候遍历一些很明显的英文目录是很有用的
+
+比如功能点页面的确定，对于后台页面，账号登录注册，可以尝试爆破，逻辑等。">
+<meta property="og:title" content="渗透测试流程">
+<meta property="og:description" content="## 渗透测试流程
+
+### 渗透思路
+
+#### 信息收集
+
+1 首先对目标进行工商信息收集，主要收集目标的股权架构，子公司，网站备案，对外产品（小程序，app,公众号），法人电话，邮箱  ，边缘业务，找软柿子捏
+
+2 收集域名信息，子域名，ip,cdn,whois,端口
+
+3 web架构信息，操作系统，中间件，网站框架
+
+
+
+#### 渗透
+
+1 第一步是去识别网站对应的框架php，java，.net，apache，nginx，weblogic，jboss，Spring，structs，tomcat，Thinkphp，Thinkcmf，某CMS等，如果相应的通过POC探测，存在相应的漏洞可以直接漏洞利用
+
+2 但是如果没有，那第一步过去就过去了，接下来就对URL进行整体的信息收集，比如目录扫描，功能点页面确定等
+3 然后对应目录扫描，可以看看有没有目录遍历，是否存在敏感目录，有时候遍历一些很明显的英文目录是很有用的
+
+比如功能点页面的确定，对于后台页面，账号登录注册，可以尝试爆破，逻辑等。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
+<title>渗透测试流程</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">渗透测试流程</h1>
+<div class="title-right">
+    <a href="https://mhwangdex.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/21" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>渗透测试流程</h2>
+<h3>渗透思路</h3>
+<h4>信息收集</h4>
+<p>1 首先对目标进行工商信息收集，主要收集目标的股权架构，子公司，网站备案，对外产品（小程序，app,公众号），法人电话，邮箱  ，边缘业务，找软柿子捏</p>
+<p>2 收集域名信息，子域名，ip,cdn,whois,端口</p>
+<p>3 web架构信息，操作系统，中间件，网站框架</p>
+<h4>渗透</h4>
+<p>1 第一步是去识别网站对应的框架php，java，.net，apache，nginx，weblogic，jboss，Spring，structs，tomcat，Thinkphp，Thinkcmf，某CMS等，如果相应的通过POC探测，存在相应的漏洞可以直接漏洞利用</p>
+<p>2 但是如果没有，那第一步过去就过去了，接下来就对URL进行整体的信息收集，比如目录扫描，功能点页面确定等<br>
+3 然后对应目录扫描，可以看看有没有目录遍历，是否存在敏感目录，有时候遍历一些很明显的英文目录是很有用的</p>
+<p>比如功能点页面的确定，对于后台页面，账号登录注册，可以尝试爆破，逻辑等。</p>
+<h4><strong>了解公司业务及web服务的功能</strong></h4>
+<p>了解公司业务也就是寻找可能的漏洞点：</p>
+<ul>
+<li>是否有搜索框能否注入或XSS</li>
+<li>是否有留言框能否XSS打cookie</li>
+<li>有登录尝试登录框是否有sql注入或XSS</li>
+<li>是否有验证码 验证码能否被识别 验证码能否被无视</li>
+<li>注册是否有sql漏洞</li>
+<li>是否能注册管理权限的账号</li>
+<li>验证手机的情况下 是否能无限轰炸 是否能任意更改 验证码是否有时间验证 验证码是否相同 是否能爆破验证码</li>
+<li>登录是否能越权 未授权访问 SQL注册测试</li>
+<li>个人信息是否有存储型XSS</li>
+<li>个人信息能否CSRF 有验证机制能否绕过</li>
+<li>个人信息是否存在越权 改变uid等敏感参数检测是否越权 平行越权 垂直越权</li>
+<li>头像上传是否能getshell 直接getshell 解析漏洞 上传漏洞 是否能上传txt</li>
+<li>修改密码能否CSRF 有验证机制能否绕过</li>
+<li>找回密码是手机号码验证 是否能无限轰炸 是否能任意更改 验证码是否有时间验证 验证码是否相同 是否能爆破验证码</li>
+<li>是否有购买商品功能 任意修改支付金额 任意修改商品数量 收货地址存储型XSS</li>
+<li>配置检查</li>
+<li>API接口安全</li>
+<li>逻辑错误漏洞</li>
+</ul>
+<h3>1.首先对目标进行工商信息收集</h3>
+<p>​		可以帮助我们跟准确识别出目标公司的网络资产</p>
+<p>- 工商数据- 信息来源- 爱企查- 企百笪- 天眼查- 启信宝- 小蓝本</p>
+<p>- 关注内容</p>
+<p>- 企业股权架构</p>
+<p>- 网站备案</p>
+<p>- 对外公布的产品（小程序、公众号APP、iot设备等）</p>
+<p>- 法人电话号、邮箱</p>
+<p>- 用处</p>
+<ol>
+<li>获取控股子公司名称，收集边缘子公司资产</li>
+<li>获取备案根域名</li>
+<li>获取其他互联网资产</li>
+<li>收集用户名等信息</li>
+</ol>
+<p>思路</p>
+<p>- 拿到目标公司名之后，先不要着急直接开始收集子域名，先统计好这家公司的股权架构，一般50%控股的可以算作有效目标，子公司资产将为我们提供不少的边缘业务系统</p>
+<p>- 通过股权穿透图收集完子公司名称后，网站备案、对外发布的产品、法人电话和邮箱同样也是比较重要的数据</p>
+<p>- <em>工具推荐</em></p>
+<p>- <a href="https://github.com/wgpsec/ENScan_GO">https://github.com/wgpsec/ENScan_GO</a></p>
+<h3>TOP10漏洞</h3>
+<p>sql注入</p>
+<p>xss</p>
+<p>csrf</p>
+<p>ssrf</p>
+<p>命令执行/代码执行</p>
+<p>反序列化</p>
+<h3>常见端口</h3>
+<p>21 ftp<br>
+弱口令,爆破<br>
+匿名访问</p>
+<p>22 SSH<br>
+弱口令,爆破<br>
+按28次Backspace键漏洞<br>
+OpenSSH用户枚举漏洞（<a title="CVE-2018-15473" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-c8qw-h3f6-fv63/hovercard" href="https://github.com/advisories/GHSA-c8qw-h3f6-fv63">CVE-2018-15473</a>）</p>
+<p>23 Telnet<br>
+弱口令登录</p>
+<p>137,139  Smaba服务<br>
+弱口令,爆破<br>
+未授权访问<br>
+远程代码执行漏洞(<a title="CVE-2015-0240" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-wjcr-wjqx-g6rq/hovercard" href="https://github.com/advisories/GHSA-wjcr-wjqx-g6rq">CVE-2015-0240</a>)</p>
+<p>389 LDAP  轻量目录访问协议<br>
+爆破，弱口令</p>
+<p>443 SSL 心脏滴血/HTTPS<br>
+OpenSSL心脏滴血漏洞(<a title="CVE-2014-0160" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-w8r8-w5w4-4w4v/hovercard" href="https://github.com/advisories/GHSA-w8r8-w5w4-4w4v">CVE-2014-0160</a>)</p>
+<p>445<br>
+1080 socket 代理<br>
+1433 MSSQL<br>
+弱口令,爆破</p>
+<p>1521 Oracle<br>
+弱口令,爆破</p>
+<p>3306 MySQL<br>
+弱口令,爆破</p>
+<p>5432 PostgreSQL<br>
+弱口令,爆破</p>
+<p>6379 redis<br>
+未授权访问<br>
+弱口令</p>
+<p>27017 Mongodb<br>
+弱口令,爆破</p>
+<p>5000 DB2<br>
+弱口令,爆破</p>
+<p>7001 WebLogic<br>
+弱口令(weblogic,weblogic|system,weblogic或weblogic123|portaladmin,guest)<br>
+爆破<br>
+后台部署war包getshell<br>
+java反序列<br>
+SSRF</p>
+<p>2601 zebra路由<br>
+弱口令,默认密码zebra</p>
+<p>3389 远程桌面<br>
+弱口令,爆破<br>
+shift 后门</p>
+<p>8080 tomcat<br>
+弱口令</p>
+<p>2181  Zookeeper<br>
+未授权访问<br>
+echo envi |nc 127.0.0.1 2181   # 输出关于服务环境的详细信息(区别于 conf 命令)<br>
+echo conf | nc 127.0.0.1 2181  # 输出相关服务配置的详细信息<br>
+echo stat|nc 127.0.0.1 2181    # 来查看哪个节点被选择作为follower或者leader<br>
+echo ruok|nc 127.0.0.1 2181    # 测试是否启动了该Server，若回复imok表示已经启动<br>
+echo dump| nc 127.0.0.1 2181   # 列出未经处理的会话和临时节点<br>
+echo kill | nc 127.0.0.1 2181  # 关掉server<br>
+echo cons | nc 127.0.0.1 2181  # 列出所有连接到服务器的客户端的完全的连接 / 会话的详细信息<br>
+echo reqs | nc 127.0.0.1 2181  # 列出未经处理的请求<br>
+echo wchs | nc 127.0.0.1 2181  # 列出服务器 watch 的详细信息<br>
+echo wchc | nc 127.0.0.1 2181 # 通过 session 列出服务器 watch 的详细信息，它的输出是一个与 watch 相关的会话的列表<br>
+echo wchp | nc 127.0.0.1 2181 # 通过路径列出服务器 watch 的详细信息。它输出一个与 session 相关的路径</p>
+<p>11211 memcache<br>
+未授权访问</p>
+<h3>漏洞</h3>
+<h4>认证/弱口令</h4>
+<p>web后台系统弱口令，有一些 有使用手册中的默认密码 导致攻击者 登录到后台中 进行下一步攻击</p>
+<p>ssh 弱口令</p>
+<p>数据库 弱口令</p>
+<p>redis 未授权访问</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://mhwangdex.github.io">Mh的blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("04/16/2025"!=""){
+    var startSite=new Date("04/16/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","mhwangdex/mhwangdex.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
