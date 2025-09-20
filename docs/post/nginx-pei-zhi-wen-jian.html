@@ -91,114 +91,114 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>NGINX 的配置文件通常位于 <code class="notranslate">/etc/nginx/nginx.conf</code>，它采用模块化的结构，由多个指令块组成。以下是 NGINX 配置文件的主要组成部分和常见配置示例：</p>
 <h2>基本结构</h2>
 <div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c"># 全局块 - 配置影响nginx全局的指令</span>
-<span class="pl-k">user</span> nginx;                      <span class="pl-c"># 运行nginx的用户</span>
-<span class="pl-k">worker_processes</span> auto;           <span class="pl-c"># 工作进程数，通常设置为CPU核心数</span>
-<span class="pl-k">error_log</span> /var/log/nginx/error.log; <span class="pl-c"># 错误日志路径</span>
-<span class="pl-k">pid</span> /run/nginx.pid;              <span class="pl-c"># PID文件位置</span>
+<span class="pl-c1">user</span> nginx<span class="pl-c1">;</span>                      # 运行nginx的用户
+<span class="pl-c1">worker_processes</span> auto<span class="pl-c1">;</span>           # 工作进程数，通常设置为CPU核心数
+<span class="pl-c1">error_log</span> /var/log/nginx/error.log<span class="pl-c1">;</span> # 错误日志路径
+<span class="pl-c1">pid</span> /run/nginx.<span class="pl-c1">pid</span><span class="pl-c1">;</span>              # PID文件位置
 
 <span class="pl-c"># Events块 - 配置影响nginx服务器或与用户的网络连接</span>
-<span class="pl-k">events</span> {
-    <span class="pl-k">worker_connections</span> <span class="pl-s">1024</span>;     <span class="pl-c"># 每个工作进程的最大连接数</span>
-    <span class="pl-k">use</span><span class="pl-c1"> epoll</span>;                   <span class="pl-c"># 使用epoll模型(高效)</span>
-    <span class="pl-k">multi_accept</span><span class="pl-c1"> on</span>;             <span class="pl-c"># 同时接受多个新连接</span>
-}
+<span class="pl-c1">events</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">worker_connections</span> <span class="pl-c1">1024</span><span class="pl-c1">;</span>     # 每个工作进程的最大连接数
+    <span class="pl-c1">use</span> epoll<span class="pl-c1">;</span>                   # 使用epoll模型<span class="pl-c1">(</span>高效<span class="pl-c1">)</span>
+    <span class="pl-c1">multi_accept</span> on<span class="pl-c1">;</span>             # 同时接受多个新连接
+<span class="pl-c1">}</span>
 
 <span class="pl-c"># HTTP块 - 配置HTTP服务器</span>
-<span class="pl-k">http</span> {
-    <span class="pl-c"># 包含MIME类型定义</span>
-    <span class="pl-k">include</span> /etc/nginx/mime.types;
-    <span class="pl-k">default_type</span> application/octet-stream;
+<span class="pl-c1">http</span> <span class="pl-c1">{</span>
+<span class="pl-c">    # 包含MIME类型定义</span>
+    <span class="pl-c1">include</span> /etc/nginx/mime.<span class="pl-c1">types</span><span class="pl-c1">;</span>
+    <span class="pl-c1">default_type</span> application/octet-<span class="pl-c1">stream</span><span class="pl-c1">;</span>
 
-    <span class="pl-c"># 日志格式</span>
-    <span class="pl-k">log_format</span><span class="pl-c1"> main</span> <span class="pl-s">'<span class="pl-smi">$remote_addr</span> - <span class="pl-smi">$remote_user</span> [<span class="pl-smi">$time_local</span>] "<span class="pl-smi">$request</span>" '</span>
-                    <span class="pl-s">'<span class="pl-smi">$status</span> <span class="pl-smi">$body_bytes_sent</span> "<span class="pl-smi">$http_referer</span>" '</span>
-                    <span class="pl-s">'"<span class="pl-smi">$http_user_agent</span>" "<span class="pl-smi">$http_x_forwarded_for</span>"'</span>;
+<span class="pl-c">    # 日志格式</span>
+    <span class="pl-c1">log_format</span> main <span class="pl-s">'$remote_addr - $remote_user [$time_local] "$request" '</span>
+                    <span class="pl-s">'$status $body_bytes_sent "$http_referer" '</span>
+                    <span class="pl-s">'"$http_user_agent" "$http_x_forwarded_for"'</span><span class="pl-c1">;</span>
 
-    <span class="pl-k">access_log</span> /var/log/nginx/access.log<span class="pl-c1"> main</span>; <span class="pl-c"># 访问日志</span>
+    <span class="pl-c1">access_log</span> /var/log/nginx/access.log main<span class="pl-c1">;</span> # 访问日志
 
-    <span class="pl-k">sendfile</span><span class="pl-c1"> on</span>;                 <span class="pl-c"># 启用高效文件传输</span>
-    <span class="pl-k">tcp_nopush</span><span class="pl-c1"> on</span>;               <span class="pl-c"># 优化数据包发送</span>
-    <span class="pl-k">keepalive_timeout</span> <span class="pl-s">65</span>;        <span class="pl-c"># 保持连接超时时间</span>
-    <span class="pl-k">types_hash_max_size</span> <span class="pl-s">2048</span>;    <span class="pl-c"># 类型哈希表大小</span>
+    <span class="pl-c1">sendfile</span> on<span class="pl-c1">;</span>                 # 启用高效文件传输
+    <span class="pl-c1">tcp_nopush</span> on<span class="pl-c1">;</span>               # 优化数据包发送
+    <span class="pl-c1">keepalive_timeout</span> <span class="pl-c1">65</span><span class="pl-c1">;</span>        # 保持连接超时时间
+    <span class="pl-c1">types_hash_max_size</span> <span class="pl-c1">2048</span><span class="pl-c1">;</span>    # 类型哈希表大小
 
-    <span class="pl-c"># 包含其他配置文件</span>
-    <span class="pl-k">include</span> /etc/nginx/conf.d/*.conf;
-    <span class="pl-k">include</span> /etc/nginx/sites-enabled/*;
-}</pre></div>
+<span class="pl-c">    # 包含其他配置文件</span>
+    <span class="pl-c1">include</span> /etc/nginx/conf.d/*.conf<span class="pl-c1">;</span>
+    <span class="pl-c1">include</span> /etc/nginx/sites-enabled/*<span class="pl-c1">;</span>
+<span class="pl-c1">}</span></pre></div>
 <h2>常见服务器配置示例</h2>
 <h3>1. 基本HTTP服务器</h3>
-<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">server</span> {
-    <span class="pl-k">listen</span> <span class="pl-s">80</span>;                   <span class="pl-c"># 监听端口</span>
-    <span class="pl-k">server_name</span> example.com www.example.com; <span class="pl-c"># 域名</span>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>                   # 监听端口
+    <span class="pl-c1">server_name</span> example.com www.example.com<span class="pl-c1">;</span> # 域名
 
-    <span class="pl-k">root</span> /var/www/html;          <span class="pl-c"># 网站根目录</span>
-    <span class="pl-k">index</span> index.html index.htm;   <span class="pl-c"># 默认索引文件</span>
+    <span class="pl-c1">root</span> /var/www/html<span class="pl-c1">;</span>          # 网站根目录
+    <span class="pl-c1">index</span> <span class="pl-c1">index</span>.html <span class="pl-c1">index</span>.htm<span class="pl-c1">;</span>   # 默认索引文件
 
-    <span class="pl-k">location</span> <span class="pl-en">/ </span>{
-        <span class="pl-k">try_files</span> <span class="pl-smi">$uri</span> <span class="pl-smi">$uri</span>/ <span class="pl-c1">=404</span>; <span class="pl-c"># 尝试寻找文件或目录，否则404</span>
-    }
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">try_files</span> <span class="pl-v">$uri</span> <span class="pl-v">$uri</span>/ =<span class="pl-c1">404</span><span class="pl-c1">;</span> # 尝试寻找文件或目录，否则<span class="pl-c1">404</span>
+    <span class="pl-c1">}</span>
 
-    <span class="pl-k">location</span> ~ <span class="pl-sr">\.php$ </span>{
-        <span class="pl-k">include</span> fastcgi_params;
-        <span class="pl-k">fastcgi_pass</span> unix:/var/run/php/php7.4-fpm.sock;
-        <span class="pl-k">fastcgi_index</span> index.php;
-        <span class="pl-k">fastcgi_param</span> SCRIPT_FILENAME <span class="pl-smi">$document_root$fastcgi_script_name</span>;
-    }
-}</pre></div>
+    <span class="pl-c1">location</span> <span class="pl-sr">~</span> <span class="pl-sr">\.php$ </span><span class="pl-c1">{</span>
+        <span class="pl-c1">include</span> fastcgi_params<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_pass</span> unix:/var/run/php/php7.4-fpm.sock<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_index</span> <span class="pl-c1">index</span>.php<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_param</span> SCRIPT_FILENAME <span class="pl-v">$document_root$fastcgi_script_name</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
 <h3>2. HTTPS服务器配置</h3>
-<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">server</span> {
-    <span class="pl-k">listen</span> <span class="pl-s">443</span> ssl;
-    <span class="pl-k">server_name</span> example.com;
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">443</span> <span class="pl-c1">ssl</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> example.com<span class="pl-c1">;</span>
 
-    <span class="pl-k">ssl_certificate</span> /etc/letsencrypt/live/example.com/fullchain.pem;
-    <span class="pl-k">ssl_certificate_key</span> /etc/letsencrypt/live/example.com/privkey.pem;
-    <span class="pl-k">ssl_protocols</span> TLSv1.2 TLSv1.3;
-    <span class="pl-k">ssl_ciphers</span> <span class="pl-s">'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256...'</span>;
-    <span class="pl-k">ssl_prefer_server_ciphers</span><span class="pl-c1"> on</span>;
-    <span class="pl-k">ssl_session_cache</span> shared:SSL:10m;
-    <span class="pl-k">ssl_session_timeout</span> <span class="pl-c1">10m</span>;
+    <span class="pl-c1">ssl_certificate</span> /etc/letsencrypt/live/example.com/fullchain.pem<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_certificate_key</span> /etc/letsencrypt/live/example.com/privkey.pem<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_protocols</span> TLSv1.2 TLSv1.3<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_ciphers</span> <span class="pl-s">'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256...'</span><span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_prefer_server_ciphers</span> on<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_session_cache</span> shared:SSL:<span class="pl-c1">10m</span><span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_session_timeout</span> <span class="pl-c1">10m</span><span class="pl-c1">;</span>
 
-    <span class="pl-k">root</span> /var/www/html;
-    <span class="pl-k">index</span> index.html;
+    <span class="pl-c1">root</span> /var/www/html<span class="pl-c1">;</span>
+    <span class="pl-c1">index</span> <span class="pl-c1">index</span>.html<span class="pl-c1">;</span>
 
-    <span class="pl-c"># 强制HTTP跳转到HTTPS</span>
-    <span class="pl-k">if</span> (<span class="pl-smi">$scheme</span> = http) {
-        <span class="pl-c1">return</span> <span class="pl-s">301</span> https://<span class="pl-smi">$server_name$request_uri</span>;
-    }
-}</pre></div>
+<span class="pl-c">    # 强制HTTP跳转到HTTPS</span>
+    <span class="pl-k">if</span> <span class="pl-c1">(</span><span class="pl-v">$scheme</span> = <span class="pl-c1">http</span><span class="pl-c1">)</span> <span class="pl-c1">{</span>
+        <span class="pl-k">return</span> <span class="pl-c1">301</span> https://<span class="pl-v">$server_name$request_uri</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
 <h3>3. 负载均衡配置</h3>
-<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">upstream</span> <span class="pl-en">backend </span>{
-    <span class="pl-k">server</span> backend1.example.com weight=5;
-    <span class="pl-k">server</span> backend2.example.com;
-    <span class="pl-k">server</span> backend3.example.com;
-    <span class="pl-k">server</span> backup.example.com backup;
-}
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">upstream</span> backend <span class="pl-c1">{</span>
+    <span class="pl-c1">server</span> backend1.example.com weight=5<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backend2.example.com<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backend3.example.com<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backup.example.com backup<span class="pl-c1">;</span>
+<span class="pl-c1">}</span>
 
-<span class="pl-k">server</span> {
-    <span class="pl-k">listen</span> <span class="pl-s">80</span>;
-    <span class="pl-k">server_name</span> example.com;
+<span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> example.com<span class="pl-c1">;</span>
 
-    <span class="pl-k">location</span> <span class="pl-en">/ </span>{
-        <span class="pl-k">proxy_pass</span> http://backend;
-        <span class="pl-k">proxy_set_header</span> Host <span class="pl-smi">$host</span>;
-        <span class="pl-k">proxy_set_header</span> X-Real-IP <span class="pl-smi">$remote_addr</span>;
-        <span class="pl-k">proxy_set_header</span> X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span>;
-    }
-}</pre></div>
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">proxy_pass</span> <span class="pl-c1">http</span>://backend<span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Host <span class="pl-v">$host</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> X-Real-IP <span class="pl-v">$remote_addr</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> X-Forwarded-For <span class="pl-v">$proxy_add_x_forwarded_for</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
 <h3>4. 反向代理配置</h3>
-<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">server</span> {
-    <span class="pl-k">listen</span> <span class="pl-s">80</span>;
-    <span class="pl-k">server_name</span> app.example.com;
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> app.example.com<span class="pl-c1">;</span>
 
-    <span class="pl-k">location</span> <span class="pl-en">/ </span>{
-        <span class="pl-k">proxy_pass</span> http://localhost:3000; <span class="pl-c"># 代理到本地3000端口</span>
-        <span class="pl-k">proxy_http_version</span> <span class="pl-c1">1.1</span>;
-        <span class="pl-k">proxy_set_header</span> Upgrade <span class="pl-smi">$http_upgrade</span>;
-        <span class="pl-k">proxy_set_header</span> Connection <span class="pl-s">'upgrade'</span>;
-        <span class="pl-k">proxy_set_header</span> Host <span class="pl-smi">$host</span>;
-        <span class="pl-k">proxy_cache_bypass</span> <span class="pl-smi">$http_upgrade</span>;
-    }
-}</pre></div>
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">proxy_pass</span> <span class="pl-c1">http</span>://localhost:<span class="pl-c1">3000</span><span class="pl-c1">;</span> # 代理到本地<span class="pl-c1">3000</span>端口
+        <span class="pl-c1">proxy_http_version</span> 1.1<span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Upgrade <span class="pl-v">$http_upgrade</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Connection <span class="pl-s">'upgrade'</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Host <span class="pl-v">$host</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_cache_bypass</span> <span class="pl-v">$http_upgrade</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
 <h2>常用指令说明</h2>
 <ol>
 <li>
