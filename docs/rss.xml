@@ -1,5 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Thu, 17 Jul 2025 11:53:17 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>渗透测试流程</title><link>https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</link><description>## 渗透测试流程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Mon, 13 Oct 2025 10:37:40 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>git使用</title><link>https://mhwangdex.github.io/post/git-shi-yong.html</link><description>&lt;html&gt;
+&lt;body&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;🪜 一、首次上传项目到 Git 仓库&lt;/h2&gt;
+&lt;h3&gt;1. 初始化 Git 仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code class='language-bash'&gt;cd 你的项目目录
+git init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;2. 绑定远程仓库地址&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先去 GitHub / Gitee 上新建一个空仓库（比如：&lt;code inline=''&gt;myproject&lt;/code&gt;），复制 HTTPS 或 SSH 地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/git-shi-yong.html</guid><pubDate>Mon, 13 Oct 2025 10:37:12 +0000</pubDate></item><item><title>渗透测试流程</title><link>https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</link><description>## 渗透测试流程
 
 ### 渗透思路
 
