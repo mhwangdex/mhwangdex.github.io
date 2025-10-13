@@ -213,8 +213,82 @@ git push -f origin main
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<h2>🪄 一行命令创建新分支并切换过去</h2>
+<pre class="notranslate"><code class="notranslate">git checkout -b 新分支名
+</code></pre>
+<p>例如：</p>
+<pre class="notranslate"><code class="notranslate">git checkout -b feature-update
+</code></pre>
+<p>📌 这个命令做了两件事：</p>
+<ol>
+<li>
+<p>基于你当前 <code class="notranslate">main</code> 分支的最新提交，创建了一个叫 <code class="notranslate">feature-update</code> 的新分支</p>
+</li>
+<li>
+<p>自动切换到了这个新分支上</p>
+</li>
+</ol>
 <hr>
-<p>要不要我直接用你的项目名和 GitHub 示例仓库名，帮你写一整套上传+回滚的命令（可直接复制）？🚀</p>
+<h2>🚀 推送新分支到远程仓库</h2>
+<p>如果你希望远程也有这个分支（比如 GitHub / Gitee）：</p>
+<pre class="notranslate"><code class="notranslate">git push -u origin feature-update
+</code></pre>
+<p><code class="notranslate">-u</code> 代表把本地分支和远程同名分支绑定，以后你可以直接：</p>
+<pre class="notranslate"><code class="notranslate">git push
+git pull
+</code></pre>
+<p>就能更新这个分支。</p>
+<hr>
+<h2>🧭 查看分支列表</h2>
+<pre class="notranslate"><code class="notranslate">git branch
+</code></pre>
+<p>输出类似：</p>
+<pre class="notranslate"><code class="notranslate">  main
+* feature-update
+</code></pre>
+<p><code class="notranslate">*</code> 表示你当前所在的分支。</p>
+<hr>
+<h2>🔁 回到 main 分支</h2>
+<p>如果你之后想回去 <code class="notranslate">main</code> 分支继续开发：</p>
+<pre class="notranslate"><code class="notranslate">git checkout main
+</code></pre>
+<hr>
+<p>✅ <strong>总结一下你的需求场景对应命令：</strong></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>操作</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基于当前代码创建分支</td>
+<td>git checkout -b 新分支名</td>
+</tr>
+<tr>
+<td>推送新分支到远程</td>
+<td>git push -u origin 新分支名</td>
+</tr>
+<tr>
+<td>查看所有本地分支</td>
+<td>git branch</td>
+</tr>
+<tr>
+<td>切换分支</td>
+<td>git checkout 分支名</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<p>👉 比如你想把现在 main 的代码保存为 <code class="notranslate">backup</code> 分支：</p>
+<pre class="notranslate"><code class="notranslate">git checkout -b backup
+git push -u origin backup
+</code></pre>
+<p>以后你随时可以用：</p>
+<pre class="notranslate"><code class="notranslate">git checkout backup
+</code></pre>
+<p>回到这份代码版本，非常方便👍</p>
 
 </div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>

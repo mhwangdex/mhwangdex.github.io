@@ -78,7 +78,65 @@ git revert <id> | 逆向撤销某个提交
 git checkout <id> | 查看历史版本（不改动当前分支）
 
 
+<h2>🪄 一行命令创建新分支并切换过去</h2>
+<pre><code class="language-bash">git checkout -b 新分支名
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-bash">git checkout -b feature-update
+</code></pre>
+<p>📌 这个命令做了两件事：</p>
+<ol>
+<li>
+<p>基于你当前 <code inline="">main</code> 分支的最新提交，创建了一个叫 <code inline="">feature-update</code> 的新分支</p>
+</li>
+<li>
+<p>自动切换到了这个新分支上</p>
+</li>
+</ol>
 <hr>
-<p>要不要我直接用你的项目名和 GitHub 示例仓库名，帮你写一整套上传+回滚的命令（可直接复制）？🚀</p></body></html><!--EndFragment-->
+<h2>🚀 推送新分支到远程仓库</h2>
+<p>如果你希望远程也有这个分支（比如 GitHub / Gitee）：</p>
+<pre><code class="language-bash">git push -u origin feature-update
+</code></pre>
+<p><code inline="">-u</code> 代表把本地分支和远程同名分支绑定，以后你可以直接：</p>
+<pre><code class="language-bash">git push
+git pull
+</code></pre>
+<p>就能更新这个分支。</p>
+<hr>
+<h2>🧭 查看分支列表</h2>
+<pre><code class="language-bash">git branch
+</code></pre>
+<p>输出类似：</p>
+<pre><code>  main
+* feature-update
+</code></pre>
+<p><code inline="">*</code> 表示你当前所在的分支。</p>
+<hr>
+<h2>🔁 回到 main 分支</h2>
+<p>如果你之后想回去 <code inline="">main</code> 分支继续开发：</p>
+<pre><code class="language-bash">git checkout main
+</code></pre>
+<hr>
+<p>✅ <strong>总结一下你的需求场景对应命令：</strong></p>
+
+操作 | 命令示例
+-- | --
+基于当前代码创建分支 | git checkout -b 新分支名
+推送新分支到远程 | git push -u origin 新分支名
+查看所有本地分支 | git branch
+切换分支 | git checkout 分支名
+
+
+<hr>
+<p>👉 比如你想把现在 main 的代码保存为 <code inline="">backup</code> 分支：</p>
+<pre><code class="language-bash">git checkout -b backup
+git push -u origin backup
+</code></pre>
+<p>以后你随时可以用：</p>
+<pre><code class="language-bash">git checkout backup
+</code></pre>
+<p>回到这份代码版本，非常方便👍</p>
+
 </body>
 </html>
