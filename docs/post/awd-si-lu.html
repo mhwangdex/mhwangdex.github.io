@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<html data-color-mode="light" data-dark-theme="dark_dimmed" data-light-theme="light" lang="zh-CN">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -75,7 +75,243 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }
 
 </style>
+/* 全局样式优化 */
+:root {
+    --primary-color: #0969da;
+    --secondary-color: #4ecdc4;
+    --accent-color: #ff6b6b;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
+}
 
+/* 页面容器优化 */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+}
+
+/* 卡片样式 */
+.markdown-body {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    padding: 2rem;
+}
+
+.markdown-body:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* 文章列表优化 */
+.post-list-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.post-list-item:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateX(5px);
+    border-left-color: var(--accent-color);
+}
+
+/* 标签样式 */
+.Label {
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.Label:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 按钮美化 */
+.btn {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 代码块美化 */
+pre {
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+code {
+    background: #f6f8fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 链接样式 */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* 头像样式 */
+.avatar {
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    padding-left: 15px;
+}
+
+h1::before, h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* 引用块美化 */
+blockquote {
+    border-left: 4px solid var(--primary-color);
+    background: linear-gradient(90deg, rgba(9, 105, 218, 0.05) 0%, transparent 100%);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+}
+
+/* 表格美化 */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+table thead {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+table tr:hover {
+    background: rgba(9, 105, 218, 0.05);
+}
+
+/* 图片样式 */
+img {
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 暗色模式适配 */
+[data-color-mode='dark'] {
+    --shadow: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+[data-color-mode='dark'] body {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+}
+
+[data-color-mode='dark'] .markdown-body,
+[data-color-mode='dark'] .post-list-item {
+    background: #161b22;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.markdown-body,
+.post-list-item {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .markdown-body {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+}
 
 
 
@@ -121,7 +357,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 改网站后台密码<br>
 加waf<br>
 审计漏洞，修改网站代码重点rce</p></div>
-<div style="font-size:small;margin-top:8px;float:right;"></div>
+<div style="font-size:small;margin-top:8px;float:right;"><div style='text-align: center; margin-top: 2rem; padding: 1rem; color: #666;'>💻 用心记录，与技术同行 | ⚡ Powered by <a href='https://github.com/Meekdai/Gmeek' target='_blank' style='color: #0969da;'>Gmeek</a></div></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
@@ -221,6 +457,126 @@ function iFrameLoading(){
 
 
 </script>
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
 
+// 返回顶部按钮
+const backToTop = document.createElement('div');
+backToTop.innerHTML = '↑';
+backToTop.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0969da, #4ecdc4);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+`;
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+backToTop.addEventListener('mouseenter', () => {
+    backToTop.style.transform = 'scale(1.1) rotate(360deg)';
+});
+
+backToTop.addEventListener('mouseleave', () => {
+    backToTop.style.transform = 'scale(1) rotate(0deg)';
+});
+
+document.body.appendChild(backToTop);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTop.style.opacity = '1';
+        backToTop.style.pointerEvents = 'auto';
+    } else {
+        backToTop.style.opacity = '0';
+        backToTop.style.pointerEvents = 'none';
+    }
+});
+
+// 代码块复制功能
+document.querySelectorAll('pre').forEach(pre => {
+    const button = document.createElement('button');
+    button.innerHTML = '复制';
+    button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 4px 12px;
+        background: #0969da;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        opacity: 0;
+        transition: all 0.2s ease;
+    `;
+    
+    pre.style.position = 'relative';
+    pre.appendChild(button);
+    
+    pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+    });
+    
+    pre.addEventListener('mouseleave', () => {
+        button.style.opacity = '0';
+    });
+    
+    button.addEventListener('click', async () => {
+        const code = pre.querySelector('code')?.innerText || pre.innerText;
+        await navigator.clipboard.writeText(code);
+        button.innerHTML = '已复制!';
+        setTimeout(() => {
+            button.innerHTML = '复制';
+        }, 2000);
+    });
+});
+
+// 阅读进度条
+const progressBar = document.createElement('div');
+progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    width: 0;
+    z-index: 9999;
+    transition: width 0.1s ease;
+`;
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+console.log('%c✨ Welcome to Mh\'s Blog! ✨', 'color: #0969da; font-size: 20px; font-weight: bold;');
 
 </html>
