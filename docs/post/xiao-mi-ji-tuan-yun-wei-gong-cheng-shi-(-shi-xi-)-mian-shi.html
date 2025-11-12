@@ -10,11 +10,29 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 0. 自我介绍
-您好，我是XXX，目前是XX大学XX专业的学生。">
+<meta name="description" content="以下是为您精心整理的 **完整版 DevOps / 云原生 / 安全运维方向面试题清单**，内容涵盖：
+
+- 个人介绍模板  
+- Docker 核心知识  
+- Kubernetes 架构与原理  
+- 监控系统（Prometheus）  
+- 服务器应急响应流程  
+- 网络基础与协议分层  
+- 企业资产测绘工具（ENScan_GO）实操要点  
+
+全部内容**结构清晰、技术准确、语言简洁**，适合用于实习生/初级工程师岗位面试准备。">
 <meta property="og:title" content="小米集团运维工程师(实习)面试">
-<meta property="og:description" content="## 0. 自我介绍
-您好，我是XXX，目前是XX大学XX专业的学生。">
+<meta property="og:description" content="以下是为您精心整理的 **完整版 DevOps / 云原生 / 安全运维方向面试题清单**，内容涵盖：
+
+- 个人介绍模板  
+- Docker 核心知识  
+- Kubernetes 架构与原理  
+- 监控系统（Prometheus）  
+- 服务器应急响应流程  
+- 网络基础与协议分层  
+- 企业资产测绘工具（ENScan_GO）实操要点  
+
+全部内容**结构清晰、技术准确、语言简洁**，适合用于实习生/初级工程师岗位面试准备。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
@@ -85,432 +103,271 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>0. 自我介绍</h2>
-<p>您好，我是XXX，目前是XX大学XX专业的学生。我对DevOps和云计算领域有浓厚兴趣，自学了Docker、Kubernetes等容器技术，并在学校的项目中使用GitLab CI/CD实现了自动化部署流程。最近我还尝试部署过Stable Diffusion等AI模型。希望能通过这次实习机会将理论知识应用到实际工作中，提升自己的运维能力。</p>
-<h2>1. 你知道哪些docker命令</h2>
-<p>常用Docker命令包括：</p>
+<div class="markdown-body" id="postBody"><p>以下是为您精心整理的 <strong>完整版 DevOps / 云原生 / 安全运维方向面试题清单</strong>，内容涵盖：</p>
 <ul>
-<li><code class="notranslate">docker run</code>：创建并启动容器
-<pre class="notranslate"><code class="notranslate">docker run -d -p 8080:80 --name mynginx nginx
-</code></pre>
-</li>
-<li><code class="notranslate">docker ps</code>：查看运行中的容器
-<pre class="notranslate"><code class="notranslate">docker ps -a  # 查看所有容器(包括停止的)
-</code></pre>
-</li>
-<li><code class="notranslate">docker images</code>：列出本地镜像</li>
-<li><code class="notranslate">docker build</code>：构建镜像
-<pre class="notranslate"><code class="notranslate">docker build -t myapp:v1 .
-</code></pre>
-</li>
-<li><code class="notranslate">docker exec</code>：进入运行中的容器
-<pre class="notranslate"><code class="notranslate">docker exec -it mynginx bash
-</code></pre>
-</li>
-<li><code class="notranslate">docker logs</code>：查看容器日志
-<pre class="notranslate"><code class="notranslate">docker logs -f mynginx
-</code></pre>
-</li>
-<li><code class="notranslate">docker stop/start/restart</code>：停止/启动/重启容器</li>
-<li><code class="notranslate">docker rm</code>：删除容器</li>
-<li><code class="notranslate">docker rmi</code>：删除镜像</li>
-<li><code class="notranslate">docker network</code>：管理网络
-<pre class="notranslate"><code class="notranslate">docker network create mynet
-</code></pre>
-</li>
+<li>个人介绍模板</li>
+<li>Docker 核心知识</li>
+<li>Kubernetes 架构与原理</li>
+<li>监控系统（Prometheus）</li>
+<li>服务器应急响应流程</li>
+<li>网络基础与协议分层</li>
+<li>企业资产测绘工具（ENScan_GO）实操要点</li>
 </ul>
-<h2>2. Dockerfile中的常用命令有哪些</h2>
-<p>Dockerfile常用指令：</p>
+<p>全部内容<strong>结构清晰、技术准确、语言简洁</strong>，适合用于实习生/初级工程师岗位面试准备。</p>
+<hr>
+<h1>🧑‍💻 DevOps / 云原生 / 安全运维面试题完整版</h1>
+<hr>
+<h2>0. 自我介绍（建议 1 分钟内）</h2>
+<blockquote>
+<p>“您好，我是 XXX，目前就读于 XX 大学 XX 专业。我对 DevOps 和云计算方向有浓厚兴趣，自学并实践了 Docker、Kubernetes 等容器化技术。在校期间，我使用 GitLab CI/CD 实现了一套自动化部署流程，并尝试在本地部署 Stable Diffusion 等 AI 模型。</p>
+<p>希望能通过这次实习机会，将理论知识应用到真实业务场景中，提升工程化能力和安全运维意识。”</p>
+</blockquote>
+<hr>
+<h2>1. 你常用哪些 Docker 命令？请举例说明</h2>
 <ul>
-<li><code class="notranslate">FROM</code>：指定基础镜像
-<pre class="notranslate"><code class="notranslate">FROM ubuntu:20.04
-</code></pre>
-</li>
-<li><code class="notranslate">RUN</code>：执行命令
-<pre class="notranslate"><code class="notranslate">RUN apt-get update &amp;&amp; apt-get install -y curl
-</code></pre>
-</li>
-<li><code class="notranslate">COPY</code>：复制文件到镜像
-<pre class="notranslate"><code class="notranslate">COPY ./app /app
-</code></pre>
-</li>
-<li><code class="notranslate">ADD</code>：类似COPY但支持URL和解压</li>
-<li><code class="notranslate">WORKDIR</code>：设置工作目录
-<pre class="notranslate"><code class="notranslate">WORKDIR /app
-</code></pre>
-</li>
-<li><code class="notranslate">EXPOSE</code>：声明端口
-<pre class="notranslate"><code class="notranslate">EXPOSE 8080
-</code></pre>
-</li>
-<li><code class="notranslate">ENV</code>：设置环境变量
-<pre class="notranslate"><code class="notranslate">ENV NODE_ENV production
-</code></pre>
-</li>
-<li><code class="notranslate">CMD</code>：容器启动命令
-<pre class="notranslate"><code class="notranslate">CMD ["python", "app.py"]
-</code></pre>
-</li>
-<li><code class="notranslate">ENTRYPOINT</code>：入口点</li>
-<li><code class="notranslate">VOLUME</code>：定义匿名卷</li>
+<li><code class="notranslate">docker run -d -p 8080:80 --name mynginx nginx</code>：启动容器</li>
+<li><code class="notranslate">docker ps / ps -a</code>：查看运行中 / 所有容器</li>
+<li><code class="notranslate">docker images</code>：列出本地镜像</li>
+<li><code class="notranslate">docker build -t myapp:v1 .</code>：构建镜像</li>
+<li><code class="notranslate">docker exec -it &lt;container&gt; bash</code>：进入容器调试</li>
+<li><code class="notranslate">docker logs -f &lt;container&gt;</code>：实时查看日志</li>
+<li><code class="notranslate">docker stop / start / restart</code>：控制容器生命周期</li>
+<li><code class="notranslate">docker rm / rmi</code>：删除容器或镜像</li>
+<li><code class="notranslate">docker network create mynet</code>：创建自定义网络</li>
+</ul>
+<hr>
+<h2>2. Dockerfile 中常用指令有哪些？</h2>
+<ul>
+<li><code class="notranslate">FROM</code>：基础镜像</li>
+<li><code class="notranslate">RUN</code>：构建时执行命令</li>
+<li><code class="notranslate">COPY</code>：复制本地文件（推荐）</li>
+<li><code class="notranslate">ADD</code>：支持 URL 下载和自动解压（慎用）</li>
+<li><code class="notranslate">WORKDIR</code>：设置工作目录</li>
+<li><code class="notranslate">EXPOSE</code>：声明端口（文档作用）</li>
+<li><code class="notranslate">ENV</code>：设置环境变量</li>
+<li><code class="notranslate">CMD</code>：容器启动命令（可覆盖）</li>
+<li><code class="notranslate">ENTRYPOINT</code>：入口点（与 CMD 配合）</li>
+<li><code class="notranslate">VOLUME</code>：定义持久化卷</li>
 <li><code class="notranslate">ARG</code>：构建参数</li>
 <li><code class="notranslate">LABEL</code>：添加元数据</li>
 </ul>
-<h2>3. Dockerfile中ADD和COPY命令的区别</h2>
-<p>主要区别：</p>
+<hr>
+<h2>3. <code class="notranslate">COPY</code> 和 <code class="notranslate">ADD</code> 的区别？</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>特性</th>
+<th><code class="notranslate">COPY</code></th>
+<th><code class="notranslate">ADD</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>仅复制本地文件</td>
+<td>支持 URL 下载 + 自动解压 tar</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>行为明确，推荐使用</td>
+<td>行为“魔法”，易出问题</td>
+</tr>
+<tr>
+<td>最佳实践</td>
+<td>优先使用</td>
+<td>仅在需解压或下载时使用</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>示例：</p>
+<div class="highlight highlight-source-dockerfile"><pre class="notranslate"><span class="pl-k">COPY</span> app.py /app/                     # ✅ 推荐
+<span class="pl-k">ADD</span> app.tar.gz /app/                  # 自动解压
+<span class="pl-k">ADD</span> https://example.com/file.txt /tmp # 从网络下载（不推荐）</pre></div>
+<hr>
+<h2>4. Kubernetes 架构是怎样的？</h2>
+<h3>控制平面（Control Plane）</h3>
+<ul>
+<li><strong>API Server</strong>：集群唯一入口，处理 REST 请求</li>
+<li><strong>etcd</strong>：存储集群所有状态</li>
+<li><strong>Scheduler</strong>：调度 Pod 到节点</li>
+<li><strong>Controller Manager</strong>：运行控制器（如 ReplicaSet）</li>
+</ul>
+<h3>工作节点（Node）</h3>
+<ul>
+<li><strong>kubelet</strong>：管理本机 Pod</li>
+<li><strong>kube-proxy</strong>：维护网络规则，实现 Service 负载均衡</li>
+<li><strong>容器运行时</strong>：如 containerd</li>
+</ul>
+<h3>扩展组件</h3>
+<ul>
+<li><strong>CNI</strong>（Calico/Flannel）：Pod 网络</li>
+<li><strong>CoreDNS</strong>：集群 DNS 服务</li>
+</ul>
+<hr>
+<h2>5. Pod 之间如何通信？</h2>
+<ul>
+<li><strong>同 Pod 内容器</strong>：通过 <code class="notranslate">localhost</code> 共享网络命名空间</li>
+<li><strong>同节点不同 Pod</strong>：通过虚拟网桥（veth pair）通信</li>
+<li><strong>跨节点 Pod</strong>：由 CNI 插件（如 VXLAN、BGP）打通</li>
+<li><strong>通过 Service</strong>：
+<ul>
+<li><code class="notranslate">ClusterIP</code>：集群内虚拟 IP，kube-proxy 转发</li>
+<li><code class="notranslate">NodePort</code> / <code class="notranslate">LoadBalancer</code> / <code class="notranslate">Ingress</code>：对外暴露</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>所有通信基于 “每个 Pod 有唯一 IP” 的网络模型。</p>
+</blockquote>
+<hr>
+<h2>6. Kubernetes 存储体系（PV / PVC / StorageClass）</h2>
+<ul>
+<li><strong>PV（PersistentVolume）</strong>：集群中预配置的存储资源（如 NFS、云盘）</li>
+<li><strong>PVC（PersistentVolumeClaim）</strong>：用户对存储的请求</li>
+<li><strong>StorageClass</strong>：定义存储类型，支持<strong>动态供给</strong></li>
+</ul>
+<blockquote>
+<p>流程：用户创建 PVC → 自动绑定/创建 PV → Pod 通过 <code class="notranslate">volumeMounts</code> 使用</p>
+</blockquote>
+<hr>
+<h2>7. Kubernetes 的配置和状态存在哪里？</h2>
+<p>全部存储在 <strong>etcd</strong> 中：</p>
+<ul>
+<li>分布式、强一致、基于 Raft</li>
+<li>存储内容：Pod、Service、Node、ConfigMap 等所有对象</li>
+<li><strong>仅 API Server 可直接访问 etcd</strong></li>
+<li>需定期备份（<code class="notranslate">etcdctl snapshot save</code>）</li>
+</ul>
+<hr>
+<h2>8. Kubernetes API Server 的作用？</h2>
+<ul>
+<li>集群的<strong>唯一入口</strong></li>
+<li>验证授权、读写 etcd、提供 REST API</li>
+<li><code class="notranslate">kubectl</code> 本质是其客户端</li>
+<li>可通过 <code class="notranslate">kubectl proxy</code> 本地代理访问：
+<div class="highlight highlight-source-shell"><pre class="notranslate">kubectl proxy --port=8080
+curl http://localhost:8080/api/v1/pods</pre></div>
+</li>
+</ul>
+<hr>
+<h2>9. Kubernetes 认证与授权机制？</h2>
+<h3>认证（Authentication）</h3>
+<ul>
+<li><strong>KUBECONFIG</strong>：用户凭证（证书/Token）</li>
+<li><strong>ServiceAccount</strong>：Pod 内身份，自动挂载 Token</li>
+</ul>
+<h3>授权（RBAC）</h3>
+<ul>
+<li><strong>Role / ClusterRole</strong>：定义权限规则（如 get pods）</li>
+<li><strong>RoleBinding / ClusterRoleBinding</strong>：绑定角色到用户或 SA</li>
+</ul>
+<blockquote>
+<p>示例：限制某 Pod 只能读取本命名空间的 Pods</p>
+</blockquote>
+<hr>
+<h2>10. 你了解 Prometheus 吗？如何监控 K8s？</h2>
+<ul>
+<li><strong>Prometheus Server</strong>：抓取、存储时序数据</li>
+<li><strong>Exporters</strong>：暴露指标（如 node_exporter）</li>
+<li><strong>Alertmanager</strong>：告警处理</li>
+<li><strong>kube-state-metrics</strong>：采集 K8s 对象状态</li>
+<li><strong>Grafana</strong>：可视化面板</li>
+</ul>
+<blockquote>
+<p>生产中常用 <strong>Prometheus Operator</strong> 自动管理组件。</p>
+</blockquote>
+<hr>
+<h2>11. 服务器出现异常进程/网络连接，如何应急响应？</h2>
+<h3>排查步骤：</h3>
 <ol>
-<li>
-<p><strong>功能差异</strong>：</p>
-<ul>
-<li><code class="notranslate">COPY</code>：仅支持将本地文件复制到镜像中</li>
-<li><code class="notranslate">ADD</code>：除复制功能外，还支持：
-<ul>
-<li>从URL下载文件</li>
-<li>自动解压tar归档文件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用场景</strong>：</p>
-<ul>
-<li>推荐优先使用<code class="notranslate">COPY</code>，因为行为更明确</li>
-<li>仅在需要ADD的特殊功能时使用它</li>
-</ul>
-</li>
-<li>
-<p><strong>示例对比</strong>：</p>
-<div class="highlight highlight-source-dockerfile"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> COPY示例</span>
-<span class="pl-k">COPY</span> requirements.txt /app/
-
-<span class="pl-c"><span class="pl-c">#</span> ADD示例(自动解压)</span>
-<span class="pl-k">ADD</span> app.tar.gz /app/
-
-<span class="pl-c"><span class="pl-c">#</span> ADD示例(从URL下载)</span>
-<span class="pl-k">ADD</span> https://example.com/file.txt /tmp/</pre></div>
-</li>
+<li><strong><code class="notranslate">top</code> / <code class="notranslate">htop</code></strong>：看 CPU/内存异常</li>
+<li><strong><code class="notranslate">ps auxf</code></strong>：查进程路径、用户、伪装名</li>
+<li><strong><code class="notranslate">/proc/&lt;PID&gt;/exe</code></strong>：定位文件（注意 <code class="notranslate">deleted</code>）</li>
+<li><strong>检查 <code class="notranslate">/bin</code> 等目录时间戳</strong>：是否被替换系统命令</li>
+<li><strong><code class="notranslate">netstat -antp</code> / <code class="notranslate">ss -tulnp</code></strong>：查异常外联</li>
+<li><strong><code class="notranslate">kill -9 &lt;PID&gt;</code></strong>：终止进程</li>
 </ol>
-<h2>4. 谈一下k8s架构</h2>
-<p>Kubernetes架构主要分为控制平面(Control Plane)和工作节点(Node)：</p>
-<p><strong>控制平面组件</strong>：</p>
+<h3>若进程重启：</h3>
+<ul>
+<li>检查 <strong>定时任务</strong>：
+<ul>
+<li>用户级：<code class="notranslate">crontab -l</code>、<code class="notranslate">/var/spool/cron/</code></li>
+<li>系统级：<code class="notranslate">/etc/crontab</code>、<code class="notranslate">/etc/cron.d/</code></li>
+</ul>
+</li>
+<li><strong><code class="notranslate">pstree -p &lt;PID&gt;</code></strong>：查父子进程，一锅端</li>
+<li>检查 <strong>systemd 服务</strong>、<code class="notranslate">/etc/rc.local</code></li>
+</ul>
+<blockquote>
+<p>✅ 原则：先取证，再处置；必要时保留内存镜像。</p>
+</blockquote>
+<hr>
+<h2>12. IP 地址、交换机、路由器的作用？</h2>
+<ul>
+<li><strong>IP 地址</strong>：网络层唯一标识主机（如手机号）</li>
+<li><strong>路由器</strong>（三层设备）：
+<ul>
+<li>根据 IP 路由表转发数据包</li>
+<li>家庭网关（如 <code class="notranslate">192.168.1.1</code>）连通内外网</li>
+</ul>
+</li>
+<li><strong>交换机</strong>（二层设备）：
+<ul>
+<li>基于 MAC 地址表转发帧</li>
+<li>三层交换机支持路由功能</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>13. 电脑如何访问一个网站？（以抖音为例）</h2>
 <ol>
-<li><strong>API Server</strong>：集群的入口，处理所有REST请求</li>
-<li><strong>etcd</strong>：分布式键值存储，保存集群状态</li>
-<li><strong>Scheduler</strong>：负责将Pod调度到合适的Node</li>
-<li><strong>Controller Manager</strong>：运行各种控制器，确保集群状态符合预期</li>
+<li><strong>本地配置</strong>：IP、子网掩码、网关、DNS（通过 <code class="notranslate">ipconfig</code> 查看）</li>
+<li><strong>DNS 解析</strong>：<code class="notranslate">douyin.com</code> → IP（如 <code class="notranslate">110.242.68.4</code>）</li>
+<li><strong>TCP 三次握手</strong>：建立连接（端口 443）</li>
+<li><strong>TLS 握手</strong>：验证证书，协商密钥（HTTPS）</li>
+<li><strong>数据封装</strong>（自上而下）：
+<ul>
+<li>应用层：HTTP 请求</li>
+<li>传输层：TCP 头（端口）</li>
+<li>网络层：IP 头（IP 地址）</li>
+<li>数据链路层：MAC 帧</li>
+</ul>
+</li>
+<li><strong>路由转发</strong>：发给网关 → 路由器逐跳转发至抖音服务器</li>
+<li><strong>响应返回</strong>：浏览器渲染页面</li>
 </ol>
-<p><strong>工作节点组件</strong>：</p>
-<ol>
-<li><strong>kubelet</strong>：负责与Control Plane通信，管理Pod</li>
-<li><strong>kube-proxy</strong>：维护节点网络规则，实现服务发现和负载均衡</li>
-<li><strong>容器运行时</strong>：如Docker/containerd，运行容器</li>
-</ol>
-<p><strong>附加组件</strong>：</p>
-<ul>
-<li><strong>CNI插件</strong>：负责Pod网络</li>
-<li><strong>CSI插件</strong>：负责存储</li>
-<li><strong>CoreDNS</strong>：集群DNS服务</li>
-</ul>
-<h2>5. k8s pod之间如何通信</h2>
-<p>Kubernetes中Pod间通信主要通过以下机制实现：</p>
-<ol>
-<li>
-<p><strong>同一Pod内容器通信</strong>：</p>
-<ul>
-<li>通过<code class="notranslate">localhost</code>和共享的网络命名空间直接通信</li>
-</ul>
-</li>
-<li>
-<p><strong>同一Node上不同Pod通信</strong>：</p>
-<ul>
-<li>通过CNI插件创建的虚拟网络设备(如veth pair)</li>
-<li>每个Pod分配唯一IP，通过虚拟网桥通信</li>
-</ul>
-</li>
-<li>
-<p><strong>不同Node上Pod通信</strong>：</p>
-<ul>
-<li>通过集群网络方案(如Flannel/Calico)实现跨节点通信</li>
-<li>常见实现方式：
-<ul>
-<li>Overlay网络(VXLAN)</li>
-<li>BGP路由</li>
-<li>主机路由</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Service抽象层</strong>：</p>
-<ul>
-<li>ClusterIP：集群内虚拟IP</li>
-<li>NodePort：节点端口暴露</li>
-<li>LoadBalancer：云提供商负载均衡器</li>
-<li>Ingress：HTTP路由</li>
-</ul>
-</li>
-<li>
-<p><strong>kube-proxy作用</strong>：</p>
-<ul>
-<li>维护iptables/ipvs规则</li>
-<li>实现Service的虚拟IP到Pod IP的转换</li>
-<li>提供负载均衡能力</li>
-</ul>
-</li>
-</ol>
-<h2>6. k8s存储（存储类，PV，PVC）</h2>
-<p>Kubernetes存储体系：</p>
-<ol>
-<li>
-<p><strong>PersistentVolume (PV)</strong>：</p>
-<ul>
-<li>集群中的存储资源，由管理员预先配置</li>
-<li>示例YAML：
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-c1">v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">PersistentVolume</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">name</span>: <span class="pl-s">pv-vol1</span>
-<span class="pl-ent">spec</span>:
-  <span class="pl-ent">capacity</span>:
-    <span class="pl-ent">storage</span>: <span class="pl-s">10Gi</span>
-  <span class="pl-ent">accessModes</span>:
-    - <span class="pl-s">ReadWriteOnce</span>
-  <span class="pl-ent">persistentVolumeReclaimPolicy</span>: <span class="pl-s">Retain</span>
-  <span class="pl-ent">storageClassName</span>: <span class="pl-s">slow</span>
-  <span class="pl-ent">hostPath</span>:
-    <span class="pl-ent">path</span>: <span class="pl-s">/mnt/data</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>PersistentVolumeClaim (PVC)</strong>：</p>
-<ul>
-<li>用户对存储的请求，类似于Pod消耗Node资源</li>
-<li>示例YAML：
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-c1">v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">PersistentVolumeClaim</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">name</span>: <span class="pl-s">pvc-1</span>
-<span class="pl-ent">spec</span>:
-  <span class="pl-ent">storageClassName</span>: <span class="pl-s">slow</span>
-  <span class="pl-ent">accessModes</span>:
-    - <span class="pl-s">ReadWriteOnce</span>
-  <span class="pl-ent">resources</span>:
-    <span class="pl-ent">requests</span>:
-      <span class="pl-ent">storage</span>: <span class="pl-s">3Gi</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>StorageClass</strong>：</p>
-<ul>
-<li>定义不同类型的存储，支持动态卷供应</li>
-<li>示例YAML：
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-s">storage.k8s.io/v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">StorageClass</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">name</span>: <span class="pl-s">fast</span>
-<span class="pl-ent">provisioner</span>: <span class="pl-s">kubernetes.io/aws-ebs</span>
-<span class="pl-ent">parameters</span>:
-  <span class="pl-ent">type</span>: <span class="pl-s">gp2</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用流程</strong>：</p>
-<ul>
-<li>管理员创建StorageClass</li>
-<li>用户创建PVC请求存储</li>
-<li>Kubernetes根据StorageClass动态创建PV</li>
-<li>Pod通过volumeMounts使用PVC</li>
-</ul>
-</li>
-</ol>
-<h2>7. k8s配置和状态存储在哪</h2>
-<p>Kubernetes集群的所有配置和状态数据存储在<strong>etcd</strong>中：</p>
-<ol>
-<li>
-<p><strong>etcd特点</strong>：</p>
-<ul>
-<li>分布式、一致的键值存储</li>
-<li>使用Raft算法保证一致性</li>
-<li>数据以键值形式组织，支持watch机制</li>
-</ul>
-</li>
-<li>
-<p><strong>存储内容</strong>：</p>
-<ul>
-<li>所有API对象(Pod、Service、Deployment等)的定义和状态</li>
-<li>集群节点信息</li>
-<li>认证和授权数据</li>
-<li>配置信息</li>
-</ul>
-</li>
-<li>
-<p><strong>etcd操作</strong>：</p>
-<ul>
-<li>通过API Server访问，不建议直接操作</li>
-<li>常用etcdctl命令：
-<pre class="notranslate"><code class="notranslate">ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
---cacert=/etc/kubernetes/pki/etcd/ca.crt \
---cert=/etc/kubernetes/pki/etcd/server.crt \
---key=/etc/kubernetes/pki/etcd/server.key \
-get / --prefix --keys-only
-</code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>备份与恢复</strong>：</p>
-<ul>
-<li>定期备份etcd数据至关重要</li>
-<li>使用<code class="notranslate">etcdctl snapshot save</code>创建快照</li>
-<li>使用<code class="notranslate">etcdctl snapshot restore</code>恢复</li>
-</ul>
-</li>
-</ol>
-<h2>8. k8s apiserver的用法</h2>
-<p>Kubernetes API Server是集群的入口，主要用法：</p>
-<ol>
-<li>
-<p><strong>REST API访问</strong>：</p>
-<ul>
-<li>基础URL：<code class="notranslate">https://&lt;master-ip&gt;:6443</code></li>
-<li>API路径：<code class="notranslate">/api/v1</code> (核心API)，<code class="notranslate">/apis/apps/v1</code> (扩展API)</li>
-</ul>
-</li>
-<li>
-<p><strong>常用操作示例</strong>：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 获取所有Pod</span>
-curl -k -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$TOKEN</span><span class="pl-pds">"</span></span> https://<span class="pl-smi">$API_SERVER</span>/api/v1/pods
-
-<span class="pl-c"><span class="pl-c">#</span> 创建Deployment</span>
-kubectl create deployment nginx --image=nginx --dry-run=client -o yaml <span class="pl-k">|</span> \
-curl -X POST -H <span class="pl-s"><span class="pl-pds">"</span>Content-Type: application/yaml<span class="pl-pds">"</span></span> \
--H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$TOKEN</span><span class="pl-pds">"</span></span> \
---data-binary @- https://<span class="pl-smi">$API_SERVER</span>/apis/apps/v1/namespaces/default/deployments</pre></div>
-</li>
-<li>
-<p><strong>kubectl原理</strong>：</p>
-<ul>
-<li>kubectl本质上是API Server的客户端</li>
-<li>转换命令为API请求发送给API Server</li>
-</ul>
-</li>
-<li>
-<p><strong>实用技巧</strong>：</p>
-<ul>
-<li>使用<code class="notranslate">kubectl proxy</code>开启本地代理：
-<pre class="notranslate"><code class="notranslate">kubectl proxy --port=8080
-# 然后访问 http://localhost:8080/api/v1/pods
-</code></pre>
-</li>
-<li>查看API资源：
-<pre class="notranslate"><code class="notranslate">kubectl api-resources
-kubectl explain pods
-</code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h2>9. k8s KUBECONFIG serviceaccount role等认证相关</h2>
-<p>Kubernetes认证授权体系：</p>
-<ol>
-<li>
-<p><strong>KUBECONFIG文件</strong>：</p>
-<ul>
-<li>包含集群、用户和上下文信息</li>
-<li>默认位置：<code class="notranslate">~/.kube/config</code></li>
-<li>结构示例：
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-c1">v1</span>
-<span class="pl-ent">clusters</span>:
-- <span class="pl-ent">cluster</span>:
-    <span class="pl-ent">certificate-authority-data</span>: <span class="pl-s">&lt;CA&gt;</span>
-    <span class="pl-ent">server</span>: <span class="pl-s">https://api.example.com</span>
-  <span class="pl-ent">name</span>: <span class="pl-s">my-cluster</span>
-<span class="pl-ent">contexts</span>:
-- <span class="pl-ent">context</span>:
-    <span class="pl-ent">cluster</span>: <span class="pl-s">my-cluster</span>
-    <span class="pl-ent">user</span>: <span class="pl-s">my-user</span>
-  <span class="pl-ent">name</span>: <span class="pl-s">my-context</span>
-<span class="pl-ent">current-context</span>: <span class="pl-s">my-context</span>
-<span class="pl-ent">users</span>:
-- <span class="pl-ent">name</span>: <span class="pl-s">my-user</span>
-  <span class="pl-ent">user</span>:
-    <span class="pl-ent">client-certificate-data</span>: <span class="pl-s">&lt;CERT&gt;</span>
-    <span class="pl-ent">client-key-data</span>: <span class="pl-s">&lt;KEY&gt;</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>ServiceAccount</strong>：</p>
-<ul>
-<li>Pod中进程的身份标识</li>
-<li>自动挂载token到<code class="notranslate">/var/run/secrets/kubernetes.io/serviceaccount</code></li>
-<li>创建示例：
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-c1">v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">ServiceAccount</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">name</span>: <span class="pl-s">my-sa</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Role和RoleBinding</strong>：</p>
-<ul>
-<li><strong>Role</strong>：定义命名空间内的权限规则
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-s">rbac.authorization.k8s.io/v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">Role</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">namespace</span>: <span class="pl-s">default</span>
-  <span class="pl-ent">name</span>: <span class="pl-s">pod-reader</span>
-<span class="pl-ent">rules</span>:
-- <span class="pl-ent">apiGroups</span>: <span class="pl-s">[""]</span>
-  <span class="pl-ent">resources</span>: <span class="pl-s">["pods"]</span>
-  <span class="pl-ent">verbs</span>: <span class="pl-s">["get", "watch", "list"]</span></pre></div>
-</li>
-<li><strong>RoleBinding</strong>：将角色绑定到主体(用户/ServiceAccount)
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">apiVersion</span>: <span class="pl-s">rbac.authorization.k8s.io/v1</span>
-<span class="pl-ent">kind</span>: <span class="pl-s">RoleBinding</span>
-<span class="pl-ent">metadata</span>:
-  <span class="pl-ent">name</span>: <span class="pl-s">read-pods</span>
-  <span class="pl-ent">namespace</span>: <span class="pl-s">default</span>
-<span class="pl-ent">subjects</span>:
-- <span class="pl-ent">kind</span>: <span class="pl-s">ServiceAccount</span>
-  <span class="pl-ent">name</span>: <span class="pl-s">my-sa</span>
-<span class="pl-ent">roleRef</span>:
-  <span class="pl-ent">kind</span>: <span class="pl-s">Role</span>
-  <span class="pl-ent">name</span>: <span class="pl-s">pod-reader</span>
-  <span class="pl-ent">apiGroup</span>: <span class="pl-s">rbac.authorization.k8s.io</span></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>ClusterRole/ClusterRoleBinding</strong>：</p>
-<ul>
-<li>类似Role/RoleBinding，但作用于整个集群</li>
-</ul>
-</li>
-</ol>
-<h2>10. Prometheus等监控系统熟不熟悉</h2>
-<p>Prometheus是流行的开源监控系统：</p>
-<ol>
-<li>
-<p><strong>核心组件</strong>：</p>
-<ul>
-<li>Prometheus Server：抓取和存储时间序列数据</li>
-<li>Exporters：暴露指标(如node-exporter)</li>
-<li>Alertmanager：处理警报</li>
-<li>Pushgateway：支持短生命周期任务的指标</li>
-</ul>
-</li>
-<li>
-<p><strong>监控Kubernetes</strong>：</p>
-<ul>
-<li>使用kube-state-metrics监控集群状态</li>
-</ul>
-</li>
-</ol></div>
+<hr>
+<h2>14. 常见网络协议分层</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>层级</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>HTTP、HTTPS、DNS、SSH、SMTP、FTP</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP、UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP、ICMP（ping）、ARP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>Ethernet、Wi-Fi</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>网线、光纤</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

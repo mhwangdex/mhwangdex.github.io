@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Wed, 12 Nov 2025 13:14:32 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Wed, 12 Nov 2025 13:24:35 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
 
 ## Protocol Overview
 
@@ -86,8 +86,17 @@ spec:				#必选的一级属性
      path:			#Pod所在宿主机的目录
    secret:			#类型为secret的存储卷，挂载secret对象到容器内部
    configMap:		#类型为configMap的存储卷，挂载configMap对象到容器内部
-```。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/pod-de-yaml.html</guid><pubDate>Sun, 08 Jun 2025 09:25:41 +0000</pubDate></item><item><title>小米集团运维工程师(实习)面试</title><link>https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</link><description>## 0. 自我介绍
-您好，我是XXX，目前是XX大学XX专业的学生。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</guid><pubDate>Thu, 08 May 2025 03:31:07 +0000</pubDate></item><item><title>docker+k8s</title><link>https://mhwangdex.github.io/post/docker%2Bk8s.html</link><description># docker
+```。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/pod-de-yaml.html</guid><pubDate>Sun, 08 Jun 2025 09:25:41 +0000</pubDate></item><item><title>小米集团运维工程师(实习)面试</title><link>https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</link><description>以下是为您精心整理的 **完整版 DevOps / 云原生 / 安全运维方向面试题清单**，内容涵盖：
+
+- 个人介绍模板  
+- Docker 核心知识  
+- Kubernetes 架构与原理  
+- 监控系统（Prometheus）  
+- 服务器应急响应流程  
+- 网络基础与协议分层  
+- 企业资产测绘工具（ENScan_GO）实操要点  
+
+全部内容**结构清晰、技术准确、语言简洁**，适合用于实习生/初级工程师岗位面试准备。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/xiao-mi-ji-tuan-yun-wei-gong-cheng-shi-%28-shi-xi-%29-mian-shi.html</guid><pubDate>Thu, 08 May 2025 03:31:07 +0000</pubDate></item><item><title>docker+k8s</title><link>https://mhwangdex.github.io/post/docker%2Bk8s.html</link><description># docker
 
 ### 1 docker 常用命令
 
