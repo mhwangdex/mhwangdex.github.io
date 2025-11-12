@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Wed, 12 Nov 2025 13:08:41 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Wed, 12 Nov 2025 13:14:32 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
 
 ## Protocol Overview
 
@@ -18,28 +18,14 @@ git init
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;2. 绑定远程仓库地址&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;先去 GitHub / Gitee 上新建一个空仓库（比如：&lt;code inline=''&gt;myproject&lt;/code&gt;），复制 HTTPS 或 SSH 地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/git-shi-yong.html</guid><pubDate>Mon, 13 Oct 2025 10:37:12 +0000</pubDate></item><item><title>渗透测试流程</title><link>https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</link><description>## 渗透测试流程
+&lt;p&gt;先去 GitHub / Gitee 上新建一个空仓库（比如：&lt;code inline=''&gt;myproject&lt;/code&gt;），复制 HTTPS 或 SSH 地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/git-shi-yong.html</guid><pubDate>Mon, 13 Oct 2025 10:37:12 +0000</pubDate></item><item><title>渗透测试流程</title><link>https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</link><description>
+# 🛡️ 渗透测试全流程指南（适用于 HW / SRC）
 
-### 渗透思路
+## 一、前期准备：目标画像与资产测绘
 
-#### 信息收集
+### 1. 工商信息收集（识别真实攻击面）
 
-1 首先对目标进行工商信息收集，主要收集目标的股权架构，子公司，网站备案，对外产品（小程序，app,公众号），法人电话，邮箱  ，边缘业务，找软柿子捏
-
-2 收集域名信息，子域名，ip,cdn,whois,端口
-
-3 web架构信息，操作系统，中间件，网站框架
-
-
-
-#### 渗透
-
-1 第一步是去识别网站对应的框架php，java，.net，apache，nginx，weblogic，jboss，Spring，structs，tomcat，Thinkphp，Thinkcmf，某CMS等，如果相应的通过POC探测，存在相应的漏洞可以直接漏洞利用
-
-2 但是如果没有，那第一步过去就过去了，接下来就对URL进行整体的信息收集，比如目录扫描，功能点页面确定等
-3 然后对应目录扫描，可以看看有没有目录遍历，是否存在敏感目录，有时候遍历一些很明显的英文目录是很有用的
-
-比如功能点页面的确定，对于后台页面，账号登录注册，可以尝试爆破，逻辑等。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</guid><pubDate>Thu, 17 Jul 2025 11:52:49 +0000</pubDate></item><item><title>pod的yaml</title><link>https://mhwangdex.github.io/post/pod-de-yaml.html</link><description>```
+**目的**：精准识别目标公司及其关联资产，避免“打偏”。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/shen-tou-ce-shi-liu-cheng.html</guid><pubDate>Thu, 17 Jul 2025 11:52:49 +0000</pubDate></item><item><title>pod的yaml</title><link>https://mhwangdex.github.io/post/pod-de-yaml.html</link><description>```
 以下是比较详细的资源清单介绍
 
 KIND:     Pod  #资源类型
