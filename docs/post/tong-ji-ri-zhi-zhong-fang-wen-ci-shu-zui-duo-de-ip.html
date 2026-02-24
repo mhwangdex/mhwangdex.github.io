@@ -35,7 +35,7 @@
 <meta property="og:url" content="https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
 <title>统计日志中访问次数最多的ip</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -110,8 +110,7 @@ grep ' 400 ' /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sor
 <h1>分析Nginx日志统计前20个访问IP的命令解析</h1>
 <p>这是一个经典的Linux命令管道组合，用于从Nginx访问日志中统计出访问量最高的前20个IP地址。下面我将详细解释每个命令的作用：</p>
 <h2>完整命令示例</h2>
-<pre lang="bash" class="notranslate"><code class="notranslate">awk '{print $1}' access.log | sort | uniq -c | sort -nr | head -20
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">awk <span class="pl-s"><span class="pl-pds">'</span>{print $1}<span class="pl-pds">'</span></span> access.log <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -nr <span class="pl-k">|</span> head -20</pre></div>
 <h2>分步解析</h2>
 <ol>
 <li>
@@ -168,18 +167,15 @@ grep ' 400 ' /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sor
 <ol>
 <li>如果要分析其他日志字段（如URL）：</li>
 </ol>
-<pre lang="bash" class="notranslate"><code class="notranslate">awk '{print $7}' access.log | sort | uniq -c | sort -nr | head -20
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">awk <span class="pl-s"><span class="pl-pds">'</span>{print $7}<span class="pl-pds">'</span></span> access.log <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -nr <span class="pl-k">|</span> head -20</pre></div>
 <ol start="2">
 <li>如果要分析特定时间段的日志：</li>
 </ol>
-<pre lang="bash" class="notranslate"><code class="notranslate">grep "10/Oct/2023" access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head -20
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">grep <span class="pl-s"><span class="pl-pds">"</span>10/Oct/2023<span class="pl-pds">"</span></span> access.log <span class="pl-k">|</span> awk <span class="pl-s"><span class="pl-pds">'</span>{print $1}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -nr <span class="pl-k">|</span> head -20</pre></div>
 <ol start="3">
 <li>如果要输出到文件：</li>
 </ol>
-<pre lang="bash" class="notranslate"><code class="notranslate">awk '{print $1}' access.log | sort | uniq -c | sort -nr | head -20 &gt; top_ips.txt
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">awk <span class="pl-s"><span class="pl-pds">'</span>{print $1}<span class="pl-pds">'</span></span> access.log <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -nr <span class="pl-k">|</span> head -20 <span class="pl-k">&gt;</span> top_ips.txt</pre></div>
 <p>这个命令管道是Linux文本处理能力的经典展示，通过简单的工具组合就能完成复杂的数据统计分析。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
