@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 14 Mar 2026 14:36:07 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>openclaw部署</title><link>https://mhwangdex.github.io/post/openclaw-bu-shu.html</link><description>## AI 与开发基础名词解析
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Mh的blog</title><link>https://mhwangdex.github.io</link><description>天下万物都有定期， 凡事都有定时。</description><copyright>Mh的blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/203419789?s=400&amp;u=30cf849564b372e84e2c69ef269a172bf10a9bb1&amp;v=4</url><title>avatar</title><link>https://mhwangdex.github.io</link></image><lastBuildDate>Sat, 14 Mar 2026 14:39:03 +0000</lastBuildDate><managingEditor>Mh的blog</managingEditor><ttl>60</ttl><webMaster>Mh的blog</webMaster><item><title>openclaw部署</title><link>https://mhwangdex.github.io/post/openclaw-bu-shu.html</link><description>## AI 与开发基础名词解析
 
-- **Base URL (基础网址):** 调用 AI 服务时要访问的“服务器地址”或“门牌号”。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/openclaw-bu-shu.html</guid><pubDate>Sat, 14 Mar 2026 14:35:40 +0000</pubDate></item><item><title>test</title><link>https://mhwangdex.github.io/post/test.html</link><description>![d3077f694c656511d4310c1d683dedc2.jpg](https://imgbed.smarteducation.eu.org/file/img/1768467349262_d3077f694c656511d4310c1d683dedc2.jpg)。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/test.html</guid><pubDate>Sun, 18 Jan 2026 12:51:42 +0000</pubDate></item><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
+- **Base URL (基础网址):** 调用 AI 服务时要访问的“服务器地址”或“门牌号”。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/openclaw-bu-shu.html</guid><pubDate>Sat, 14 Mar 2026 14:35:40 +0000</pubDate></item><item><title>提示词2</title><link>https://mhwangdex.github.io/post/ti-shi-ci-2.html</link><description># ADAPTIVE-3 + MULTIDIMENSIONAL THINKING
 
 ## Protocol Overview
 
@@ -323,15 +323,6 @@ service 四种 type
 
 # 分析Nginx日志统计前20个访问IP的命令解析
 
-这是一个经典的Linux命令管道组合，用于从Nginx访问日志中统计出访问量最高的前20个IP地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</guid><pubDate>Sat, 26 Apr 2025 15:41:08 +0000</pubDate></item><item><title>四月十七日</title><link>https://mhwangdex.github.io/post/si-yue-shi-qi-ri.html</link><description>### 2025年4月17日 星期四 [天气：☀️/⛅]  
-今天是四月十七日晚，最近半个月都不想学习，也不想做其它的事，感觉没有能提起我感兴趣的，脑子空空的，就是不想学习，周四周五在运动会，所以放假了，不行玩游戏，不想看电影
-
-![10001plane.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648450950_10001plane.jpeg)
-
-![10001.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648452117_10001.jpeg)
-
-![dog.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648450348_dog.jpeg)。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/si-yue-shi-qi-ri.html</guid><pubDate>Thu, 17 Apr 2025 15:14:17 +0000</pubDate></item><item><title>图片</title><link>https://mhwangdex.github.io/post/tu-pian.html</link><description>![10001plane.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648450950_10001plane.jpeg)
-
-![10001.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648452117_10001.jpeg)。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/tu-pian.html</guid><pubDate>Thu, 17 Apr 2025 07:29:30 +0000</pubDate></item><item><title>about</title><link>https://mhwangdex.github.io/about.html</link><description>
+这是一个经典的Linux命令管道组合，用于从Nginx访问日志中统计出访问量最高的前20个IP地址。</description><guid isPermaLink="true">https://mhwangdex.github.io/post/tong-ji-ri-zhi-zhong-fang-wen-ci-shu-zui-duo-de-ip.html</guid><pubDate>Sat, 26 Apr 2025 15:41:08 +0000</pubDate></item><item><title>about</title><link>https://mhwangdex.github.io/about.html</link><description>
 
 人是变化的，随着时间，人的外貌，人的思想都会改变。</description><guid isPermaLink="true">https://mhwangdex.github.io/about.html</guid><pubDate>Tue, 22 Apr 2025 15:51:28 +0000</pubDate></item></channel></rss>
