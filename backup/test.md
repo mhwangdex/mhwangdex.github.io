@@ -1,0 +1,1 @@
+![2bc231c1-f9cd-4ea8-81b6-dd501d696e02.webp](https://img.smarteducation.eu.org/file/img/1777198255963_2bc231c1-f9cd-4ea8-81b6-dd501d696e02.webp)
