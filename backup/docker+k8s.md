@@ -36,7 +36,7 @@ docker tag 源  目标:版本
 
 **使用docker network ls**
 
-![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/8facfdc0-ca78-4d69-b7e4-0aa18c683a31.png)
+
 
 1. **none** k8s最开始就是这种模式，由网络插件负责网络，首先在pod中创建出pause容器，然后让其他容器与它共享网络**
 2. **host**
@@ -55,7 +55,7 @@ docker tag 源  目标:版本
 
 ### 架构
 
-![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-04/91270e75-197f-4bfe-b54b-04002b70a9e9.png)
+
 
 ### 二 kubectl使用
 
@@ -246,11 +246,11 @@ status: {}
 
 service 四种 type
 
-![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/767cc897-2e83-41e0-b460-35a8847c12c9.png)
+
 
 ### 十 自我恢复
 
-![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/77f8057f-39a1-42a5-b788-117edbbfb99e.png)
+
 
 **pod重启机制**
 
@@ -258,7 +258,6 @@ service 四种 type
 
 **pod健康检查**
 
-![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/968cae50-6c88-476e-857b-929ef4300c60.png)![image.png](https://cdn.jsdelivr.net/gh/mhwangdex/note-gen-image-sync@main/2025-05/c03c02ae-1c8f-4a1d-8ac2-53104e51726f.png)
 
 ### 十一 自动上线和回滚
 
