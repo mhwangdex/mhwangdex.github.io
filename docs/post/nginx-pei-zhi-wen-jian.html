@@ -10,22 +10,18 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 准备流程（第一轮对话）
+<meta name="description" content="# NGINX 配置文件详解
 
-### 第一步
+NGINX 的配置文件通常位于 `/etc/nginx/nginx.conf`，它采用模块化的结构，由多个指令块组成。">
+<meta property="og:title" content="nginx配置文件">
+<meta property="og:description" content="# NGINX 配置文件详解
 
-在开始项目之前，需要先计划好自己想要什么，然后告诉 AI。">
-<meta property="og:title" content="提示词">
-<meta property="og:description" content="## 准备流程（第一轮对话）
-
-### 第一步
-
-在开始项目之前，需要先计划好自己想要什么，然后告诉 AI。">
+NGINX 的配置文件通常位于 `/etc/nginx/nginx.conf`，它采用模块化的结构，由多个指令块组成。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://mhwangdex.github.io/post/ti-shi-ci.html">
+<meta property="og:url" content="https://mhwangdex.github.io/post/nginx-pei-zhi-wen-jian.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
-<title>提示词</title>
-
+<title>nginx配置文件</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -67,7 +63,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">提示词</h1>
+<h1 class="postTitle">nginx配置文件</h1>
 <div class="title-right">
     <a href="https://mhwangdex.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -75,7 +71,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/23" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/10" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -91,61 +87,161 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>准备流程（第一轮对话）</h2>
-<h3>第一步</h3>
-<p>在开始项目之前，需要先计划好自己想要什么，然后告诉 AI。但是！<strong>Prompt 完全不必写得太正式</strong>，只需要把想说的一股脑说出来，然后在最末尾质问它能否理解即可 (Claude Sonnet 4 和 Gemini 2.5 Pro 都适用)</p>
-<p>举个我自己项目瞎几把一通乱说的例子（我的需求是让 AI 参考某个项目和塞一些 API 让它学习）</p>
-<pre class="notranslate"><code class="notranslate">我需要一个 svg to compose imagevector 的 python 脚本，基于 uv 环境
-                                                                                                    
-我的要求是让它以 ~/.../projects/community/Valkyrie 的基准来实现。你生成的 Compose 代码必须准确，最重要的是需要正确的解析逻辑，以及正确转换为 ImageVector 和 Path 代码的逻辑！你可以用工具来查看                                                                      
-~/.../androidx/compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/graphics/vector 目录和                                                          
-~/.../androidx/compose/ui/ui-graphics/src/commonMain/kotlin/androidx/compose/ui/graphics 目录下感兴趣的相关文件，然后阅读内容来参考它们，以确保我们在  python 中转换正确的代码，这点很重要！
+<div class="markdown-body" id="postBody"><h1>NGINX 配置文件详解</h1>
+<p>NGINX 的配置文件通常位于 <code class="notranslate">/etc/nginx/nginx.conf</code>，它采用模块化的结构，由多个指令块组成。以下是 NGINX 配置文件的主要组成部分和常见配置示例：</p>
+<h2>基本结构</h2>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c"># 全局块 - 配置影响nginx全局的指令</span>
+<span class="pl-c1">user</span> nginx<span class="pl-c1">;</span>                      # 运行nginx的用户
+<span class="pl-c1">worker_processes</span> auto<span class="pl-c1">;</span>           # 工作进程数，通常设置为CPU核心数
+<span class="pl-c1">error_log</span> /var/log/nginx/error.log<span class="pl-c1">;</span> # 错误日志路径
+<span class="pl-c1">pid</span> /run/nginx.<span class="pl-c1">pid</span><span class="pl-c1">;</span>              # PID文件位置
 
-但我不确定如何设计这个 python 项目，以及对于输出的 kotlin 代码，我不确定有没有一个优雅的模版能实现
+<span class="pl-c"># Events块 - 配置影响nginx服务器或与用户的网络连接</span>
+<span class="pl-c1">events</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">worker_connections</span> <span class="pl-c1">1024</span><span class="pl-c1">;</span>     # 每个工作进程的最大连接数
+    <span class="pl-c1">use</span> epoll<span class="pl-c1">;</span>                   # 使用epoll模型<span class="pl-c1">(</span>高效<span class="pl-c1">)</span>
+    <span class="pl-c1">multi_accept</span> on<span class="pl-c1">;</span>             # 同时接受多个新连接
+<span class="pl-c1">}</span>
 
+<span class="pl-c"># HTTP块 - 配置HTTP服务器</span>
+<span class="pl-c1">http</span> <span class="pl-c1">{</span>
+<span class="pl-c">    # 包含MIME类型定义</span>
+    <span class="pl-c1">include</span> /etc/nginx/mime.<span class="pl-c1">types</span><span class="pl-c1">;</span>
+    <span class="pl-c1">default_type</span> application/octet-<span class="pl-c1">stream</span><span class="pl-c1">;</span>
 
-我的描述可能不够清楚，我不确定你是否理解到我意思了，仔细思考一下让我看看你是否理解了。
+<span class="pl-c">    # 日志格式</span>
+    <span class="pl-c1">log_format</span> main <span class="pl-s">'$remote_addr - $remote_user [$time_local] "$request" '</span>
+                    <span class="pl-s">'$status $body_bytes_sent "$http_referer" '</span>
+                    <span class="pl-s">'"$http_user_agent" "$http_x_forwarded_for"'</span><span class="pl-c1">;</span>
 
-我们暂时不写代码，而是设计、并且深度思考构思出一个能解决我所有需求的东西，详细说说你的分析和看法，以及规划
-</code></pre>
-<p>上面内容完全是想到就写，没有做任何的修饰和写法优化，是不是写的很烂？但是没关系，AI 大人完全能 get 到我的意思！</p>
-<h3>第二步</h3>
-<p>下一步就是与 AI 讨论方案，直到你确认它提出的方案没问题之后，让它创建一个任务跟踪目录。</p>
-<p>继续给出我的 SHIT EXAMPLE</p>
-<pre class="notranslate"><code class="notranslate">我认可了！
+    <span class="pl-c1">access_log</span> /var/log/nginx/access.log main<span class="pl-c1">;</span> # 访问日志
 
-不过最重要的是，我们需要足够完整清晰理解所有实现规划，以及细节，原因在于我们的会话 context window 有限制，到达某一刻之后你可能会忘记全部信息，因此你必须提前规划好我们完成这个项目需要什么，比如：如何解析 svg、如何将对应的东西转换成 compose 中的 api；这方面的所有任务安排都应该尽可能详细，我的描述可能不够清楚，我不确定你是否理解到我意思了，深度思考一下让我看看你是否理解了 
+    <span class="pl-c1">sendfile</span> on<span class="pl-c1">;</span>                 # 启用高效文件传输
+    <span class="pl-c1">tcp_nopush</span> on<span class="pl-c1">;</span>               # 优化数据包发送
+    <span class="pl-c1">keepalive_timeout</span> <span class="pl-c1">65</span><span class="pl-c1">;</span>        # 保持连接超时时间
+    <span class="pl-c1">types_hash_max_size</span> <span class="pl-c1">2048</span><span class="pl-c1">;</span>    # 类型哈希表大小
 
-此外，之前我给你的目录参考，你似乎已经从中读取了关键的源码文件？如果信息足够，你可以将详细的具体文件记录，这样就可以让下次失忆的你重新读取整个目录，然后通过详细的信息恢复记忆来。当然如果你认为零散的文件不足以让下次的你想起所有细节时，在必要的时候也可以记录完整目录，取决你的深度思考，我们不在乎算力！
+<span class="pl-c">    # 包含其他配置文件</span>
+    <span class="pl-c1">include</span> /etc/nginx/conf.d/*.conf<span class="pl-c1">;</span>
+    <span class="pl-c1">include</span> /etc/nginx/sites-enabled/*<span class="pl-c1">;</span>
+<span class="pl-c1">}</span></pre></div>
+<h2>常见服务器配置示例</h2>
+<h3>1. 基本HTTP服务器</h3>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>                   # 监听端口
+    <span class="pl-c1">server_name</span> example.com www.example.com<span class="pl-c1">;</span> # 域名
 
-总之，为了能够在你因为上下文容量不足清空记忆后，还能够以正确的路径实现这个项目，并且确保细节不丢失，一个能够完整记忆所有细节以及跟踪任务的记录会很有帮助。
+    <span class="pl-c1">root</span> /var/www/html<span class="pl-c1">;</span>          # 网站根目录
+    <span class="pl-c1">index</span> <span class="pl-c1">index</span>.html <span class="pl-c1">index</span>.htm<span class="pl-c1">;</span>   # 默认索引文件
 
-这意味着我们可以随时继续任务，并且能正确地恢复，因此你需要深度思考设计一个能够完美记忆的任务目录？具体工作安排的计划表？或者其他什么？仔细设计一下，你可以在 .claude/tasks 下面记录，使用 xml 格式的文件（tag name 简洁明确），不要写 emoji，不要记录具体日期，不要记录无意义的冗余信息
-</code></pre>
-<p>BALABALA 然后 AI 就会创建一个[<a href="https://github.com/chachako/svg-to-compose-vector/tree/main/.claude/tasks">用来记录项目进度、实现细节的目录</a>](<a href="https://github.com/chachako/svg-to-compose-vector/tree/main/.claude/tasks)%E4%BA%86">https://github.com/chachako/svg-to-compose-vector/tree/main/.claude/tasks)了</a> ，这个就是保持整个项目不会混乱的关键点之一！</p>
-<h3>第三步</h3>
-<p>接着是本轮会话的最后一步：</p>
-<pre class="notranslate"><code class="notranslate">非常完美！现在我需要你给我一个将未来失去记忆的你“唤醒”的指令。
-你需要教你自己如何根据这些文件去跟踪任务，并正确地恢复，以及在之后完成任务之后应该如何做、如何更新，和其他必要的指导。
-因为你每次可能只能完成一部分任务，一旦任务完成，或者上下文容量快满的时候，我就会将你记忆清空重头开始，仔细思考一下什么样的指令可以指导失去记忆的你找回自己
-</code></pre>
-<p>这时候 AI 通常会帮你创建一个文件或者输出一段唤醒指令 prompt 给你，<strong>记录下来</strong>，后续会一直用到。</p>
-<p>完成这些之后，一个项目或者一个大需求 vibe coding 的准备工作就完成了。</p>
-<p><strong>现在可以把消息上下文完全清空掉了！</strong></p>
-<h2>后续编码</h2>
-<p>每次做一个任务都应该清空会话历史，然后重复下面步骤：</p>
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">try_files</span> <span class="pl-v">$uri</span> <span class="pl-v">$uri</span>/ =<span class="pl-c1">404</span><span class="pl-c1">;</span> # 尝试寻找文件或目录，否则<span class="pl-c1">404</span>
+    <span class="pl-c1">}</span>
+
+    <span class="pl-c1">location</span> <span class="pl-sr">~</span> <span class="pl-sr">\.php$ </span><span class="pl-c1">{</span>
+        <span class="pl-c1">include</span> fastcgi_params<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_pass</span> unix:/var/run/php/php7.4-fpm.sock<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_index</span> <span class="pl-c1">index</span>.php<span class="pl-c1">;</span>
+        <span class="pl-c1">fastcgi_param</span> SCRIPT_FILENAME <span class="pl-v">$document_root$fastcgi_script_name</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
+<h3>2. HTTPS服务器配置</h3>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">443</span> <span class="pl-c1">ssl</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> example.com<span class="pl-c1">;</span>
+
+    <span class="pl-c1">ssl_certificate</span> /etc/letsencrypt/live/example.com/fullchain.pem<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_certificate_key</span> /etc/letsencrypt/live/example.com/privkey.pem<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_protocols</span> TLSv1.2 TLSv1.3<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_ciphers</span> <span class="pl-s">'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256...'</span><span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_prefer_server_ciphers</span> on<span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_session_cache</span> shared:SSL:<span class="pl-c1">10m</span><span class="pl-c1">;</span>
+    <span class="pl-c1">ssl_session_timeout</span> <span class="pl-c1">10m</span><span class="pl-c1">;</span>
+
+    <span class="pl-c1">root</span> /var/www/html<span class="pl-c1">;</span>
+    <span class="pl-c1">index</span> <span class="pl-c1">index</span>.html<span class="pl-c1">;</span>
+
+<span class="pl-c">    # 强制HTTP跳转到HTTPS</span>
+    <span class="pl-k">if</span> <span class="pl-c1">(</span><span class="pl-v">$scheme</span> = <span class="pl-c1">http</span><span class="pl-c1">)</span> <span class="pl-c1">{</span>
+        <span class="pl-k">return</span> <span class="pl-c1">301</span> https://<span class="pl-v">$server_name$request_uri</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
+<h3>3. 负载均衡配置</h3>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">upstream</span> backend <span class="pl-c1">{</span>
+    <span class="pl-c1">server</span> backend1.example.com weight=5<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backend2.example.com<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backend3.example.com<span class="pl-c1">;</span>
+    <span class="pl-c1">server</span> backup.example.com backup<span class="pl-c1">;</span>
+<span class="pl-c1">}</span>
+
+<span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> example.com<span class="pl-c1">;</span>
+
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">proxy_pass</span> <span class="pl-c1">http</span>://backend<span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Host <span class="pl-v">$host</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> X-Real-IP <span class="pl-v">$remote_addr</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> X-Forwarded-For <span class="pl-v">$proxy_add_x_forwarded_for</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
+<h3>4. 反向代理配置</h3>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">server</span> <span class="pl-c1">{</span>
+    <span class="pl-c1">listen</span> <span class="pl-c1">80</span><span class="pl-c1">;</span>
+    <span class="pl-c1">server_name</span> app.example.com<span class="pl-c1">;</span>
+
+    <span class="pl-c1">location</span> / <span class="pl-c1">{</span>
+        <span class="pl-c1">proxy_pass</span> <span class="pl-c1">http</span>://localhost:<span class="pl-c1">3000</span><span class="pl-c1">;</span> # 代理到本地<span class="pl-c1">3000</span>端口
+        <span class="pl-c1">proxy_http_version</span> 1.1<span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Upgrade <span class="pl-v">$http_upgrade</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Connection <span class="pl-s">'upgrade'</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_set_header</span> Host <span class="pl-v">$host</span><span class="pl-c1">;</span>
+        <span class="pl-c1">proxy_cache_bypass</span> <span class="pl-v">$http_upgrade</span><span class="pl-c1">;</span>
+    <span class="pl-c1">}</span>
+<span class="pl-c1">}</span></pre></div>
+<h2>常用指令说明</h2>
 <ol>
-<li>复制上次那个唤醒指令，并在末尾加上 “看看我们现在要做什么”</li>
-<li>等待 AI 大人根据 tasks 目录的信息开始本次会话的任务</li>
-<li>与 AI 大人对线（途中如果对代码质量不放心，可以每个都 review）</li>
-<li>让它写测试（建议每个测试的 assert 都检查一遍，<strong>这可能是最需要认真的地方</strong>）</li>
-<li>等 lint 和测试跑通 or 等它修复完所有问题</li>
-<li>一切看上去都没问题之后，说 <code class="notranslate">看起来我们本次会话的工作都完成了，现在请你更新你的 .claude/tasks 目录</code></li>
-<li><strong>最后最重要的一步！让它检查当前 git 的本地更改，然后 commit</strong>（这意味着后续改炸了也能恢复到最完美的状态重新尝试）</li>
-<li>安心清空本次会话历史</li>
+<li>
+<p><strong>location 匹配规则</strong>:</p>
+<ul>
+<li><code class="notranslate">= /path</code> - 精确匹配</li>
+<li><code class="notranslate">^~ /path</code> - 前缀匹配(不检查正则)</li>
+<li><code class="notranslate">~ pattern</code> - 区分大小写的正则匹配</li>
+<li><code class="notranslate">~* pattern</code> - 不区分大小写的正则匹配</li>
+<li><code class="notranslate">/path</code> - 普通前缀匹配</li>
+</ul>
+</li>
+<li>
+<p><strong>日志相关</strong>:</p>
+<ul>
+<li><code class="notranslate">access_log</code> - 访问日志</li>
+<li><code class="notranslate">error_log</code> - 错误日志</li>
+<li><code class="notranslate">rewrite_log</code> - 重写日志(调试用)</li>
+</ul>
+</li>
+<li>
+<p><strong>性能优化</strong>:</p>
+<ul>
+<li><code class="notranslate">gzip on</code> - 启用Gzip压缩</li>
+<li><code class="notranslate">client_max_body_size 20m</code> - 最大上传文件大小</li>
+<li><code class="notranslate">keepalive_timeout</code> - 保持连接时间</li>
+</ul>
+</li>
+<li>
+<p><strong>安全相关</strong>:</p>
+<ul>
+<li><code class="notranslate">add_header X-Frame-Options SAMEORIGIN</code> - 防止点击劫持</li>
+<li><code class="notranslate">add_header X-Content-Type-Options nosniff</code> - 防止MIME类型嗅探</li>
+<li><code class="notranslate">add_header X-XSS-Protection "1; mode=block"</code> - XSS保护</li>
+</ul>
+</li>
 </ol>
-<hr>
-<p>按照上面的一整套流程下来，抽空了就可以让它上班，而且随时都能中断，写的代码也非常不错 （在我看来） 最重要的是我的需求完美解决了，而且效果非常棒！</p></div>
+<h2>配置文件检查与重载</h2>
+<p>在修改配置文件后，应该先检查语法是否正确：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nginx -t</pre></div>
+<p>如果语法正确，重新加载配置：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nginx -s reload</pre></div>
+<p>以上是NGINX配置文件的基本结构和常见配置示例，实际使用时需要根据具体需求进行调整。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
