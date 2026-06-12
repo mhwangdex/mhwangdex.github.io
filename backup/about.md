@@ -4,7 +4,7 @@
 
 
 
-![10001.jpeg](https://imgbed.smarteducation.eu.org/file/img/1768648452117_10001.jpeg)
+![wallhaven-45d2y5.webp](https://img.smarteducation.eu.org/file/blog/1781248424159_wallhaven-45d2y5.webp)
 
 
 
